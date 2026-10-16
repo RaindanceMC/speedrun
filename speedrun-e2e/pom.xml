@@ -43,19 +43,8 @@
             <artifactId>modules-api</artifactId>
             <scope>test</scope>
         </dependency>
-        <!-- Built before this module, so the scenarios play the jar this build just made. -->
-        <dependency>
-            <groupId>de.raindancer.modules</groupId>
-            <artifactId>speedrun-standalone</artifactId>
-            <version>${project.parent.version}</version>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>*</groupId>
-                    <artifactId>*</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
+        <!-- No dependency on speedrun-standalone: it is published at its plugin version, not this one. The scenarios play
+             the jar in ../speedrun-standalone/target, and the e2e run (Actions, on request) installs everything first. -->
     </dependencies>
 
     <build>
