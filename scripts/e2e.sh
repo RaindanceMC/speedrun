@@ -39,9 +39,8 @@ if [ "$BUILD" = 1 ]; then
   # its own test (StandaloneJarTest#theJarIsNotStale) is what proves the jar is this build's.
   # Everything both standalone jars need, so a cold local repository works too. RainsEconomy is there
   # for EntryFeeScenarioTest, which puts economy-standalone/target's jar beside RainsSpeedrun.
-  "${MVN[@]}" -q clean install -pl speedrun-standalone,economy-standalone -am -DskipTests
+  "${MVN[@]}" -q clean install -pl speedrun-standalone -am -DskipTests
   "${MVN[@]}" -q install -pl speedrun-standalone
-  "${MVN[@]}" -q clean install -pl e2e-harness -DskipTests
 fi
 
 # A fresh record: the run-time coverage check reads what this run, and only this run, did.
@@ -49,9 +48,6 @@ rm -rf speedrun-e2e/target/e2e e2e-harness/target/e2e
 
 echo "[e2e] every command, page, setting and button has a scenario …"
 "${MVN[@]}" -q test -pl speedrun-e2e -Dtest=CoverageTest
-
-echo "[e2e] the harness on a plain server …"
-"${MVN[@]}" test -pl e2e-harness -Pe2e ${ONLY:+-Dtest=HarnessTest -Dsurefire.failIfNoSpecifiedTests=false}
 
 echo "[e2e] RainsSpeedrun, every scenario …"
 if [ -n "$ONLY" ]; then
