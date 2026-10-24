@@ -1,0 +1,25 @@
+id: speedrun-fees
+title: Entry fees & prizes
+summary: What it costs to race, where the money goes, and how the prize pot is shared.
+intro: |
+  Putting money on a race: noble, ancient, and generally unwise. But the server does the sums correctly.
+icon: GOLD_NUGGET
+category: Games
+order: 12
+module: speedrun
+aliases: [fee, entry, prize, pot, payout]
+keywords: [money, entry fee, pot, house cut, prize split, refund]
+related: [speedrun]
+sections:
+  - question: Does it cost anything to race?
+    title: The fee
+    text: |
+      Every racer pays <white>{setting:speedrun:economy.entry-fee}</white> when a run starts (a plain 0 means free, and then no economy plugin is needed). If somebody cannot pay, they are told, and nobody is charged for that start. The fees of a run form its prize pot.
+  - question: Who gets the pot?
+    title: Prizes
+    text: |
+      The server keeps <white>{setting:speedrun:economy.house-cut-percent|percent}</white> as a house cut; the rest is shared by place with the weights <white>{setting:speedrun:economy.prize-split}</white> (100 is winner takes all; 60,30,10 gives first, second and third place those shares). In a plain race everybody who raced shares first place when the goal is reached; in a game with sides, the winning side shares it evenly. A run that is reset or ends otherwise pays nobody. Shares round down; the odd leftover goes to first place.
+  - question: What if the run never finishes?
+    title: Refunds
+    text: |
+      Fees are refunded if the server stops during a run, and a prize that could not be paid right now is logged for staff rather than lost.

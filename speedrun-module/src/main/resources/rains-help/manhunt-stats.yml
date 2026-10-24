@@ -1,0 +1,29 @@
+id: manhunt-stats
+title: Hunt stats & ratings
+summary: Your record as Runner and Hunter, the leaderboard, past hunts and summaries.
+intro: |
+  Every chase leaves a record. Yes, including the one where you walked into lava.
+icon: WRITABLE_BOOK
+category: Games
+order: 23
+module: speedrun
+aliases: [rating, hunt-stats, hunt-top]
+keywords: [stats, rating, leaderboard, history, summary, mvp, catches, announcements, hud]
+related: [manhunt]
+sections:
+  - question: Are hunts recorded?
+    title: Stats
+    text: |
+      {if:manhunt:stats-enabled}Yes: every hunt is added to each player's stats and moves their rating. {cmd:/manhunt stats <player>} shows rating, hunts, wins as Runner and as Hunter, catches and more.{else}Not right now — hunts are not added to stats on this server (what was kept stays).{/if}
+  - question: Where is the leaderboard?
+    title: Leaderboard
+    text: |
+      {cmd:/manhunt top [rating]} — sort by rating, wins and so on; the command lists the options as buttons.
+  - question: Can I read about a past hunt?
+    title: History & summaries
+    text: |
+      {cmd:/manhunt history} lists past hunts; {cmd:/manhunt summary [number]} shows one — who caught whom and when, splits, Hunter and Runner MVP and the Explorer.
+  - question: Can I mute the split titles?
+    title: HUD & titles
+    text: |
+      {cmd:/manhunt announcements} switches split titles and sounds on and off for you; {cmd:/manhunt hud} cycles where splits show.

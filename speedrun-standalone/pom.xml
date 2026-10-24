@@ -116,7 +116,7 @@
              *.imported-2.0.0 instead (the backup copy stays). -->
         <!-- 1.35.0: Core 2.0 — the old history.yml is moved again (read as a file, not taken in as a document, and recovered where Core already set it aside); Manhunt's old files likewise; the whitelist flag and VIP list are written off the server thread. -->
         <!-- 1.35.1: the whitelist flag and VIP list written under one lock (the last write holds the newest state) and flushed when the module stops. -->
-        <plugin.version>1.35.1</plugin.version>
+        <plugin.version>1.36.0</plugin.version>
     </properties>
 
     <dependencies>

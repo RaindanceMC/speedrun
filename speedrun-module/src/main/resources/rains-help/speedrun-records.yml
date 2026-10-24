@@ -1,0 +1,42 @@
+id: speedrun-records
+title: Splits, stats & records
+summary: Split times, where you see them, personal bests, the leaderboard, seeds and practice kits.
+intro: |
+  Everything is timed, compared and filed. Your personal best is in here somewhere, looking smug.
+icon: NETHER_STAR
+category: Games
+order: 11
+module: speedrun
+aliases: [splits, stats, top, leaderboard, history, records, pb, seed, practice, hud]
+keywords: [personal best, record, gold split, sidebar, bossbar, practice kit, seed, category, ranked]
+related: [speedrun]
+sections:
+  - question: What are splits?
+    title: Splits
+    text: |
+      Milestones every run is timed at, in the order a dragon run passes them: Nether, Bastion, Fortress, Blaze rod, Pearls (the racers together collect {setting:speedrun:pearl-target|count} ender pearls), Out of the nether, Stronghold, The End, Dragon at half, Dragon killed and Finish. A game mode may add its own.
+      {if:speedrun:split-announcements}Each split is said in chat with how it compares to your best and the server record.{else}Splits are not announced in chat on this server, but they are still recorded.{/if}{if:speedrun:gold-split-celebration} Beating the best time anybody ever reached that split in earns a title, a sound and the word <gold>gold</gold>.{/if}
+  - question: Where do I see my splits?
+    title: Showing splits
+    text: |
+      Choose where: sidebar, boss bar, action bar or off. Default is <white>{setting:speedrun:hud-default}</white>. {cmd:/speedrun hud} cycles through them, or name one: {cmd:/speedrun hud actionbar}. The clock itself stays on your action bar either way.{if:speedrun:show-timer-to-onlookers} Everybody in the lobby world sees the clock, not just racers.{/if}
+  - question: How do I see my stats?
+    title: Stats
+    text: |
+      {cmd:/speedrun stats} opens your personal bests and every run you have done; add a name to see somebody else's, even offline ({cmd:/speedrun stats <player>}). {cmd:/speedrun history} lists past runs with every split.
+  - question: Where is the leaderboard?
+    title: Leaderboard
+    text: |
+      {run:/speedrun top} — the best run of each player for the category being played. Records, personal bests and boards are kept per <i>category</i>: the same goal, random or set seed, the same game, practice never beside the real thing. A set-seed dragon kill and a random-seed one are different races.
+  - question: Which runs count?
+    title: Ranked or not
+    text: |
+      {if:speedrun:rank-edited-runs}Even runs that were resumed or had their clock set by hand count.{else}A run that was resumed with /speedrunresume, whose clock staff set by hand, or that you joined late, is kept in your history flagged and stays off the leaderboards and out of your personal bests.{/if}
+  - question: How are worlds seeded?
+    title: Seeds
+    text: |
+      Seed mode is <white>{setting:speedrun:seed-mode}</white>: RANDOM makes every world from a fresh seed, FIXED always uses one seed{if:speedrun:seed-mode == FIXED} ({setting:speedrun:seed}){/if}, POOL picks one of a list at random each time{if:speedrun:seed-mode == POOL} ({setting:speedrun:seed-pool}){/if}. Staff change it with {cmd:/speedrun seed [seed or random or same]} — <i>same</i> replays this exact map next reset, ranked as a set seed.
+  - question: What are practice runs?
+    title: Practice kits
+    text: |
+      {if:speedrun:practice-kit != NONE}This lobby is in practice mode: every racer is handed the <white>{setting:speedrun:practice-kit}</white> kit and the run is ranked on its own practice leaderboard.{else}This lobby is running real runs. Staff can turn on a practice kit (Blaze rods and pearls, Eyes of ender or Dragon fight) to drill the later stages; those are kept on separate boards.{/if}

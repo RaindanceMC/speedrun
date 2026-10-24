@@ -1,0 +1,38 @@
+id: manhunt-staff
+title: Manhunt (staff)
+summary: Assigning sides, balancing, starting and resuming hunts, goals, doors and lost compasses.
+intro: |
+  Here is how to run the whole chase. Please keep the sides vaguely fair.
+icon: WARPED_SIGN
+category: Staff
+order: 20
+module: speedrun
+permission: rainsmanhunt.manhunt.admin
+aliases: [manhunt-admin, assign, balance]
+keywords: [assign, unassign, random, balance, give, goal, door, setup, preflight, resume, reset, whitelist]
+related: [manhunt, speedrun-staff]
+sections:
+  - question: How do I put people on sides?
+    title: Sides
+    text: |
+      {cmd:/manhunt assign <player> runner} or {cmd:hunter}, {cmd:/manhunt unassign <player>} (they hunt at the start), {cmd:/manhunt reset} (both sides empty — not while a hunt is on), {cmd:/manhunt sides} (the editor page). Moving somebody mid-hunt changes the round everybody is in, and I will say so.
+  - question: Can the server pick fairly?
+    title: Random and balance
+    text: |
+      {cmd:/manhunt random [number]} draws that many Runners by lot (one by default). {cmd:/manhunt balance} splits the lobby by rating (up to {if:manhunt:balance-max-runners > 0}{setting:manhunt:balance-max-runners|count} Runners{else}a third of the lobby{/if}) and says the Runners' chance. It takes two players at least.
+  - question: How do I start, resume or check a hunt?
+    title: Starting
+    text: |
+      The green block as usual, or {cmd:/manhunt start}, which first sets the lobby to Manhunt. {cmd:/manhunt preflight} lists what is missing with one-click fixes. {cmd:/manhunt resume [time]} picks a hunt up after a restart — put the Runners on their side first, everybody else hunts.
+  - question: How do I change the goal?
+    title: Goal
+    text: |
+      {cmd:/manhunt goal} opens the picker; {cmd:/manhunt goal set <advancement>} sets it for the next hunt (this one keeps its own); {cmd:/manhunt goal remove} removes it, also mid-hunt: it then ends when the last Runner is caught, or by reset.
+  - question: How do I hand out a lost compass?
+    title: Compasses
+    text: |
+      {cmd:/manhunt give <player or all> [tracker or team or structure]} gives whatever is missing, refusing a full inventory and a compass that is switched off or not for that side.
+  - question: How do I set the door and presets?
+    title: Door & presets
+    text: |
+      {cmd:/manhunt door keep-open} or {cmd:/manhunt door close-on-start} (now {setting:manhunt:close-whitelist-on-start|onoff}). {cmd:/manhunt setup classic} or {cmd:casual} applies a preset — classic is one life, the real thing; casual gives two lives and a team compass. Everything stays changeable in {cmd:/settings}.

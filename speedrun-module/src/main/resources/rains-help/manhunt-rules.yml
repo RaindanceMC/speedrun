@@ -1,0 +1,46 @@
+id: manhunt-rules
+title: Hunt rules & the door
+summary: Head start, lives, glowing Runners, fists only, the server whitelist and /whitelist open and close.
+intro: |
+  The small print of a hunt, with the actual numbers from this server, which is more than most small prints can say.
+icon: CLOCK
+category: Games
+order: 22
+module: speedrun
+aliases: [whitelist, headstart, head-start, glow, door, lives]
+keywords: [head start, lives, glow, fists, circle, whitelist, vip, open, close, grace]
+commands: [whitelist]
+related: [manhunt, manhunt-compasses]
+sections:
+  - question: Do the Runners get a head start?
+    title: Head start
+    text: |
+      {if:manhunt:hunter-head-start-seconds > 0}Yes: the Hunters stand still and touch nothing for <white>{setting:manhunt:hunter-head-start-seconds|seconds}</white> once the run starts, while the Runners are loose.{else}No: everybody goes at once.{/if}
+      {if:manhunt:hunter-head-start-seconds > 0 && manhunt:head-start-per-hunter-seconds > 0}Every Hunter beyond the number of Runners adds {setting:manhunt:head-start-per-hunter-seconds|seconds}.{/if}{if:manhunt:hunter-head-start-seconds > 0 && manhunt:hud-head-start-bar} A boss bar counts it down.{/if}
+  - question: Where does everybody stand at the start?
+    title: The start
+    text: |
+      {if:manhunt:start-in-circle}Evenly around one circle, facing the middle, Runners together and Hunters together; it grows with the player count, around the start point or world spawn.{else}At the lobby's start point, as in any run.{/if}
+  - question: Do Runners glow?
+    title: Glowing
+    when: manhunt:glowing-runners-every-minutes > 0
+    text: |
+      Every <white>{setting:manhunt:glowing-runners-every-minutes|minutes}</white> every Runner glows through walls for {setting:manhunt:glowing-runners-seconds|seconds}, and everybody is warned ten seconds before.
+  - question: May Hunters hit each other?
+    title: Teammates
+    text: |
+      {if:manhunt:hunters-fists-only}Only with bare fists: a sword, axe, bow or anything else does nothing to a teammate, and I mind my manners about it.{else}However they like. Please don't.{/if}
+  - question: Why can nobody new join?
+    title: The whitelist door
+    text: |
+      {if:manhunt:close-whitelist-on-start}Starting a hunt shuts the server to anybody not already online and opens it again when the hunt ends — only a whitelist this closed itself is reopened.{else}A hunt leaves the server's door exactly as the owner set it.{/if}
+  - question: What does /whitelist open and close do?
+    title: /whitelist
+    permission: rainsmanhunt.manhunt.whitelist
+    text: |
+      {cmd:/whitelist open} lets anybody join; {cmd:/whitelist close} lets only whoever is online right now stay. They need their own permission so a Runner can run the doors without full whitelist rights. Anything else you type (add, remove, list, on, off, reload) is handed straight to vanilla.
+  - question: How do I keep somebody on the list?
+    title: VIPs and clearing
+    permission: rainsmanhunt.manhunt.whitelist.admin
+    text: |
+      {cmd:/whitelist vip add <player>}, {cmd:/whitelist vip remove <player>} and {cmd:/whitelist vip list}: VIPs survive {cmd:/whitelist clear} and are let in by a close. Vanilla's <white>bukkit.command.whitelist</white> counts too.

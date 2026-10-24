@@ -1,0 +1,77 @@
+id: speedrun
+title: Speedrun
+summary: A race to a goal in a world of its own — how to get in, what the start does, and what ends a run.
+intro: |
+  Same game, but somebody is holding a stopwatch. I have been told this is fun. I will be over here, keeping the clock honest.
+icon: CLOCK
+category: Games
+order: 10
+module: speedrun
+aliases: [race, speedruns, lobby, lemmemove, freezeagain, unlemmemove, speedrunspectate, spectate, countdown]
+keywords: [speedrun, timer, clock, start, goal, dragon, death, lobby, compass, freeze, portal, late, join]
+commands: [speedrun, speedrunspectate, lemmemove, freezeagain]
+related: [speedrun-records, speedrun-fees, manhunt]
+sections:
+  - question: What is a speedrun here?
+    title: The idea
+    text: |
+      Everybody in the lobby starts together, in a fresh world, and the clock runs until the goal is reached: {if:speedrun:advancement-key}{setting:speedrun:advancement-key}{else}no advancement is set right now{/if}.{if:speedrun:game-mode} The game played here is <white>{setting:speedrun:game-mode}</white> — see {topic:manhunt}.{else} It is a plain race.{/if}
+      Worlds are made new for every run: the lobby world <white>{setting:speedrun:world-name}</white>, with its own nether and End, so nothing you do touches the rest of the server.
+  - question: How do I get to the lobby?
+    title: Getting in
+    text: |
+      Type {run:/speedrun}. Away from the lobby it takes you there (with a button for the menu); inside it, it opens the menu. {cmd:/speedrun join} only teleports, {cmd:/speedrun menu} only opens the menu.
+      Needs <white>rainsspeedrun.join</white>, which everybody has by default. If you log in anywhere on this server and you are not in the lobby world, you are sent there — this server is built around the race.
+  - question: What are the compass and green block?
+    title: Lobby items
+    text: |
+      In a ready lobby you are handed a <white>compass</white> (the speedrun menu: goal, death rule, the run in progress) and{if:speedrun:start-block-staff-only} — if you may start runs — {/if} a <green>green block</green> that starts a run. They are buttons, not gear: they cannot be put in chests, they vanish if you die, and they are taken away when a run begins.
+      {if:speedrun:start-block-staff-only}Only staff (<white>rainsspeedrun.start</white>) are handed the green block and may press one; everybody else just gets the compass.{else}Everybody in the lobby gets a green block, and anybody may press it.{/if}
+  - question: How does a run start?
+    title: Starting
+    text: |
+      Press the green block or type {cmd:/speedrun start}. I first check everything: the lobby is ready, its world and dimensions exist, a goal is set, somebody is racing, the game mode is set up (the list is also {cmd:/speedrun check}, each failing line with a one-click fix for staff). Then a <white>five-second countdown</white> begins: a boss bar ticks down and everybody racing is held in place. You may look around but not step.
+      {if:speedrun:start-point-set}Everybody is then teleported to the start line staff set with /starthere.{else}No start point is set, so everybody starts where they stood.{/if} Everybody standing in the lobby world races, except those who registered as not racing.
+  - question: What does the start do to me?
+    title: A clean slate
+    text: |
+      Every racer is put back to a standard start: full health and hunger, no XP, effects and fire gone, empty inventory and ender chest, and the area cleared of hostile mobs and dropped items.{if:speedrun:clear-advancements-on-start} Your advancements are wiped too, so a first-timer and a veteran play the same game and the goal can be granted again.{else} Your advancements are left alone; only the goal itself is cleared.{/if}{if:speedrun:set-time-on-start} The world's clock is set to tick {setting:speedrun:start-time-ticks|count}.{/if}
+      Bring nothing you cannot live without into the lobby. I mean that kindly.
+  - question: What ends a run?
+    title: Winning and losing
+    text: |
+      {if:speedrun:advancement-key}The run ends when somebody earns <white>{setting:speedrun:advancement-key}</white>.{/if}{if:speedrun:require-exit-portal-after-dragon && speedrun:advancement-key == minecraft:end/kill_dragon} For the dragon, killing her is only the first half: a racer must then step into the exit portal, the way real dragon runs are judged.{/if}
+      {if:speedrun:death-policy == ANY}A death ends it too: the first racer to die ends the run for everybody.{/if}{if:speedrun:death-policy == ALL} It also ends once every racer has died.{/if}{if:speedrun:death-policy == OFF} Dying does not end it: respawn and carry on.{/if}
+      An admin can also reset it at any time. When it ends, the result is shown and the world is remade{if:speedrun:restart-when-run-ends} by itself after {setting:speedrun:restart-after-seconds|seconds}, long enough to read who won{else} once everybody has left the server{/if}.
+  - question: Can I just watch?
+    title: Not racing
+    text: |
+      Type {cmd:/speedrunspectate} (or {cmd:/speedrun spectate}) to register as not racing: pressing the start block then skips you. It sticks until you type it again. Needs <white>rainsspeedrun.spectate</white>, which everybody has by default.
+  - question: What if I join while a run is on?
+    title: Joining late
+    text: |
+      {if:speedrun:late-join == OFF}Nothing happens to you: you land in the run's world and look on. You can race in the next run.{/if}{if:speedrun:late-join == SPECTATE}You are put in spectator mode in the run's world until it is over.{/if}{if:speedrun:late-join == RACE}You join the race from that moment, with a clean slate, the practice kit if one is on, the game's own items and a safe spot near the start, on the running clock. A run you joined late is kept in your history but never ranks as your best.{/if}
+      Somebody who was racing and just reconnects is never a latecomer: they keep everything. {if:speedrun:late-join != OFF}While an entry fee applies, you only race if you can pay it.{/if}
+  - question: What are the lobby rules?
+    title: Lobby rules
+    text: |
+      {if:speedrun:lobby-protected}Nobody can be hurt in the lobby world while no run is on — not even by another player.{/if}{if:speedrun:lobby-explosions-blocked} Nothing explodes there either.{/if}
+      {if:!speedrun:breaking-blocks-before-runs}Until a run starts, ordinary players cannot break or place blocks, open chests or use blocks anywhere on the server — nobody strips the start line before the gun.{/if}{if:!speedrun:monsters-hunt-before-runs} Mobs ignore everybody until the clock starts.{/if}
+      Waiting players are also held still, so wandering off with your items is not "waiting in the lobby".
+  - question: What does /lemmemove do?
+    title: Stuck in the freeze
+    text: |
+      If a bug leaves you frozen, type {cmd:/lemmemove}: it lifts the movement freeze for you but keeps your place in the race. {cmd:/freezeagain} puts it back. Both need <white>rainsspeedrun.lemmemove.self</white>, which everybody has.
+  - question: How do portals and death work?
+    title: Portals & death
+    text: |
+      A run keeps to its own three worlds: nether and End portals lead to the run's nether and End, never the server's own, and you respawn inside the run if you die in one of them.
+  - question: What may I blow up?
+    title: Explosives
+    text: |
+      Rules per dimension, set by the server. Beds in the Nether: {setting:speedrun:bed-explosions-in-nether|yesno}. Beds in the End: {setting:speedrun:bed-explosions-in-the-end|yesno}. Respawn anchors in the Overworld: {setting:speedrun:anchor-explosions-in-overworld|yesno}, in the End: {setting:speedrun:anchor-explosions-in-the-end|yesno}. TNT (and TNT minecarts) in the Overworld {setting:speedrun:tnt-in-overworld|yesno}, Nether {setting:speedrun:tnt-in-nether|yesno}, End {setting:speedrun:tnt-in-the-end|yesno}. End crystals in the Overworld {setting:speedrun:end-crystals-in-overworld|yesno}, Nether {setting:speedrun:end-crystals-in-nether|yesno}, End {setting:speedrun:end-crystals-in-the-end|yesno}. Where it says no, the click or the fuse simply does nothing.
+  - question: Do creepers spawn when I mine?
+    title: Creeper hazard
+    when: speedrun:creeper-spawn-chance-on-break-percent > 0 || speedrun:creeper-spawn-chance-on-container-percent > 0
+    text: |
+      Tonight, yes. {if:speedrun:creeper-spawn-chance-on-break-percent > 0}Breaking a block has a {setting:speedrun:creeper-spawn-chance-on-break-percent|count}% chance to spawn a creeper right where it broke ({setting:speedrun:charged-creeper-chance-on-break-percent|count}% of them charged).{/if}{if:speedrun:creeper-spawn-chance-on-container-percent > 0} Opening a chest or other container has a {setting:speedrun:creeper-spawn-chance-on-container-percent|count}% chance to spawn one where you stand ({setting:speedrun:charged-creeper-chance-on-container-percent|count}% charged).{/if} Mine accordingly.

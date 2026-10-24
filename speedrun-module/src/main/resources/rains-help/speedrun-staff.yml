@@ -1,0 +1,48 @@
+id: speedrun-staff
+title: Speedrun (staff)
+summary: Setting up the lobby, starting, resetting and resuming runs, and fixing a clock.
+intro: |
+  The buttons that decide everybody else's evening.
+icon: LODESTONE
+category: Staff
+order: 10
+module: speedrun
+permission: rainsspeedrun.admin
+aliases: [starthere, speedrunreset, speedrunresume, speedruntime, speedrun-admin]
+keywords: [setup, assistant, reset, resume, clock, start point, preflight, check, world]
+commands: [starthere, speedrunreset, speedrunresume, speedruntime]
+related: [speedrun, manhunt-staff]
+sections:
+  - question: How do I set the lobby up?
+    title: Setup assistant
+    text: |
+      {cmd:/speedrun setup} opens the assistant, offered to every admin who joins until it is finished ({setting:speedrun:setup-done|yesno} now). Everything it sets is also in {cmd:/settings} under Speedrun: the lobby world, the goal, the death rule, the start, the lobby rules, explosives, seeds, splits and fees.
+  - question: How do I set the start line?
+    title: /starthere
+    text: |
+      Stand in the lobby world ({setting:speedrun:world-name}) where the line should be and type {cmd:/starthere}. Everybody racing is teleported there when a countdown begins. It is forgotten when the world resets.
+  - question: How do I check a start will work?
+    title: Pre-flight
+    text: |
+      {cmd:/speedrun check} lists what a start needs — ready lobby, world and dimensions, a goal that exists, racers present, the game installed, a practice kit warning, an incomplete seed setting — each failing line with a one-click fix (reset, create worlds, plain race, dragon goal, bring everybody, switch the kit off, random seeds).
+  - question: How do I end a run and remake the world?
+    title: Reset
+    text: |
+      {cmd:/speedrunreset} (or {cmd:/speedrun reset}) force-ends the current run and deletes and remakes the lobby world and its nether and End; it asks first. From the console, add <white>confirm</white>. It is logged. The lobby world must not be the server's main world: that can never be reset.
+  - question: How do I pick a run up after a restart?
+    title: Resume
+    text: |
+      A run does not survive a restart: the lobby comes back ready with the map as it was. {cmd:/speedrunresume [time]} starts a run over the world as it stands, where everybody is and with what they carry, at the time you give (like 42:05). A resumed run is kept flagged{if:speedrun:rank-edited-runs} and, on this server, still ranks{else} and does not rank{/if}.
+  - question: How do I fix the clock?
+    title: Set the clock
+    text: |
+      {cmd:/speedruntime <time>} sets the running clock — 42:05, 1:02:03 or 1h30m. It only works while a run is on, and the run is then flagged as edited.
+  - question: How do I release or refreeze others?
+    title: Releasing others
+    permission: rainsspeedrun.lemmemove.others
+    text: |
+      {cmd:/lemmemove <player>} lifts somebody else's movement freeze (it can hand out a head start, hence its own permission); {cmd:/freezeagain <player>} undoes that. A release lasts until the lobby resets.
+  - question: What can I switch on or off?
+    title: Settings
+    text: |
+      Lobby rules: players hurt in the lobby ({setting:speedrun:lobby-protected|onoff} protected), explosions blocked ({setting:speedrun:lobby-explosions-blocked|onoff}), block use before runs ({setting:speedrun:breaking-blocks-before-runs|onoff}), mobs targeting before runs ({setting:speedrun:monsters-hunt-before-runs|onoff}), start block for staff only ({setting:speedrun:start-block-staff-only|onoff}), automatic reset ({setting:speedrun:restart-when-run-ends|onoff}, after {setting:speedrun:restart-after-seconds|seconds}). Late joiners: {setting:speedrun:late-join}. Hazards, explosives, seeds, practice kit and fees are listed on the player pages. Everyone but admins is exempt from none of it; an admin may build in the lobby before a run.

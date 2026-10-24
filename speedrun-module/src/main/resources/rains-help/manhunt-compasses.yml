@@ -1,0 +1,39 @@
+id: manhunt-compasses
+title: Hunt compasses
+summary: The Hunters' tracker, the team compass, the Runners' structure compass and the particle trail.
+intro: |
+  A compass that points at people. Not subtle, but it works.
+icon: COMPASS
+category: Games
+order: 21
+module: speedrun
+aliases: [compass, tracker, trail, structure-compass, team-compass]
+keywords: [tracker, needle, nearest, portal, dimension, particles, structure, recovery, lost]
+related: [manhunt, manhunt-rules]
+sections:
+  - question: What does the Hunters' compass do?
+    title: The tracker
+    text: |
+      Every Hunter is handed a tracking compass. {if:manhunt:tracker-hunter-may-choose}Right-click cycles it to the next Runner (or the nearest){else}It follows whoever is nearest and nobody may look away{/if}. It is re-aimed every {setting:manhunt:tracker-refresh-ticks|ticks}.{if:manhunt:tracker-show-distance} Holding it shows how many blocks away the Runner is.{/if}
+  - question: What if a Runner is elsewhere?
+    title: Across dimensions
+    text: |
+      {if:manhunt:tracker-cross-world == LAST_PORTAL}The needle points at the door the Runner went through, which is in your own world.{/if}{if:manhunt:tracker-cross-world == NAME_WORLD}The compass only names the world they are in.{/if}{if:manhunt:tracker-cross-world == HIDDEN}It says nothing: out of sight, out of mind.{/if}
+  - question: What is the particle trail?
+    title: Trail
+    when: manhunt:tracker-particle-trail
+    text: |
+      A dotted line of particles that leads towards whoever, or whichever door, the compass points at; only the Hunter holding it sees it. {cmd:/manhunt trail} turns it off and on for you.
+  - question: Do Runners get a compass?
+    title: Runner compasses
+    text: |
+      {if:manhunt:runner-compass}Yes: a compass that points at the Hunters, the nearest or one they pick.{else}No tracking compass for Runners.{/if}{if:manhunt:runner-structure-compass} Every Runner also gets one <white>structure compass</white> per hunt: right-click it to choose a kind of structure — once, and never a stronghold. It finds the nearest, shows no distance and disappears when thrown away or when you are within 20 blocks.{/if}
+  - question: What is the team compass?
+    title: Team compass
+    when: manhunt:tracker-team-compass
+    text: |
+      Everybody in a hunt gets a second compass that points at their own side — Runners at Runners, Hunters at Hunters — in every dimension. It is a {setting:manhunt:tracker-team-compass-item}. Right-click cycles through teammates; sneak + right-click opens a list.
+  - question: I lost my compass!
+    title: Lost compasses
+    text: |
+      They are bound to you, so they do not drop on death. If one is still missing, ask an admin: {cmd:/manhunt give <player>} hands back whatever you lack, and nothing is pushed out of a full inventory.

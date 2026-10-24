@@ -17,7 +17,7 @@ Needs Java 25 and read access to `packages.tstieh.de` (server ids `packages-rele
 
 ## Plugins
 
-- `speedrun-standalone/target/RainsSpeedrun-1.35.1.jar` — also published as `de.raindancer.modules:speedrun-standalone:1.35.1`
+- `speedrun-standalone/target/RainsSpeedrun-1.36.0.jar` — also published as `de.raindancer.modules:speedrun-standalone:1.36.0`
 - `speedrun-bundle/target/RainsSpeedrunServer-0.19.0.jar` — also published as `de.raindancer.modules:speedrun-bundle:0.19.0`
 
 ## Versions
