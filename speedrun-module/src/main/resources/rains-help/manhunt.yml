@@ -15,7 +15,7 @@ sections:
   - question: How does Manhunt work?
     title: The idea
     text: |
-      A hunt is a speedrun with sides. <green>Runners</green> race for the goal{if:speedrun:advancement-key} (<white>{setting:speedrun:advancement-key}</white>){/if}; <red>Hunters</red> chase them. The Runners win by reaching the goal; the Hunters win once every Runner is caught. {if:speedrun:game-mode == manhunt}The lobby is playing Manhunt right now.{else}The lobby is currently set to another game; staff switch it to Manhunt (or {cmd:/manhunt start} does it for them).{/if}
+      A hunt is a speedrun with sides. <green>Runners</green> race for the goal{if:speedrun:advancement-key} (<white>{setting:speedrun:advancement-key|name}</white>){/if}; <red>Hunters</red> chase them. The Runners win by reaching the goal; the Hunters win once every Runner is caught. {if:speedrun:game-mode == manhunt}The lobby is playing Manhunt right now.{else}The lobby is currently set to another game; staff switch it to Manhunt (or {cmd:/manhunt start} does it for them).{/if}
       Open {run:/manhunt} for the hub: the sides, the status and everything below on one page.
   - question: How do I pick a side?
     title: Picking a side

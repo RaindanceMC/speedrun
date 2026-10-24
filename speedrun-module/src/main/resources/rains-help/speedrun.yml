@@ -15,7 +15,7 @@ sections:
   - question: What is a speedrun here?
     title: The idea
     text: |
-      Everybody in the lobby starts together in a brand-new world, and the clock runs until {if:speedrun:advancement-key == minecraft:end/kill_dragon}somebody kills the Ender Dragon{/if}{if:speedrun:advancement-key && speedrun:advancement-key != minecraft:end/kill_dragon}somebody earns the goal advancement (<white>{setting:speedrun:advancement-key}</white>){/if}{if:!speedrun:advancement-key}staff set a goal — none is set right now{/if}.{if:speedrun:game-mode} The game played here is <white>{setting:speedrun:game-mode}</white> — see {topic:manhunt}.{else} It is a plain race: first one there wins.{/if}
+      Everybody in the lobby starts together in a brand-new world, and the clock runs until {if:speedrun:advancement-key == minecraft:end/kill_dragon}somebody kills the Ender Dragon{/if}{if:speedrun:advancement-key && speedrun:advancement-key != minecraft:end/kill_dragon}somebody earns the goal advancement (<white>{setting:speedrun:advancement-key|name}</white>){/if}{if:!speedrun:advancement-key}staff set a goal — none is set right now{/if}.{if:speedrun:game-mode} The game played here is <white>{setting:speedrun:game-mode}</white> — see {topic:manhunt}.{else} It is a plain race: first one there wins.{/if}
 
       Every run gets fresh worlds of its own — overworld, Nether and End — so nothing you do in a run touches the rest of the server, and nothing out there can spoil your seed.
   - question: How do I get to the lobby?
@@ -41,7 +41,7 @@ sections:
   - question: What ends a run?
     title: Winning and losing
     text: |
-      {if:speedrun:advancement-key}The run ends when somebody earns <white>{setting:speedrun:advancement-key}</white>.{/if}{if:speedrun:require-exit-portal-after-dragon && speedrun:advancement-key == minecraft:end/kill_dragon} For the dragon, killing her is only the first half: a racer must then step into the exit portal, the way real dragon runs are judged.{/if}
+      {if:speedrun:advancement-key}The run ends when somebody earns <white>{setting:speedrun:advancement-key|name}</white>.{/if}{if:speedrun:require-exit-portal-after-dragon && speedrun:advancement-key == minecraft:end/kill_dragon} For the dragon, killing her is only the first half: a racer must then step into the exit portal, the way real dragon runs are judged.{/if}
       {if:speedrun:death-policy == ANY}A death ends it too: the first racer to die ends the run for everybody.{/if}{if:speedrun:death-policy == ALL} It also ends once every racer has died.{/if}{if:speedrun:death-policy == OFF} Dying does not end it: respawn and carry on.{/if}
       An admin can also reset it at any time. When it ends, the result is shown and the world is remade{if:speedrun:restart-when-run-ends} by itself after {setting:speedrun:restart-after-seconds|seconds}, long enough to read who won{else} once everybody has left the server{/if}.
   - question: Can I just watch?
