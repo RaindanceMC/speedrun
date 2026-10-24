@@ -15,25 +15,25 @@ sections:
   - question: Do the Runners get a head start?
     title: Head start
     text: |
-      {if:manhunt:hunter-head-start-seconds > 0}Yes: the Hunters stand still and touch nothing for <white>{setting:manhunt:hunter-head-start-seconds|seconds}</white> once the run starts, while the Runners are loose.{else}No: everybody goes at once.{/if}
-      {if:manhunt:hunter-head-start-seconds > 0 && manhunt:head-start-per-hunter-seconds > 0}Every Hunter beyond the number of Runners adds {setting:manhunt:head-start-per-hunter-seconds|seconds}.{/if}{if:manhunt:hunter-head-start-seconds > 0 && manhunt:hud-head-start-bar} A boss bar counts it down.{/if}
+      {if:speedrun-manhunt:hunter-head-start-seconds > 0}Yes: the Hunters stand still and touch nothing for <white>{setting:speedrun-manhunt:hunter-head-start-seconds|seconds}</white> once the run starts, while the Runners are loose.{else}No: everybody goes at once.{/if}
+      {if:speedrun-manhunt:hunter-head-start-seconds > 0 && speedrun-manhunt:head-start-per-hunter-seconds > 0}Every Hunter beyond the number of Runners adds {setting:speedrun-manhunt:head-start-per-hunter-seconds|seconds}.{/if}{if:speedrun-manhunt:hunter-head-start-seconds > 0 && speedrun-manhunt:hud-head-start-bar} A boss bar counts it down.{/if}
   - question: Where does everybody stand at the start?
     title: The start
     text: |
-      {if:manhunt:start-in-circle}Evenly around one circle, facing the middle, Runners together and Hunters together; it grows with the player count, around the start point or world spawn.{else}At the lobby's start point, as in any run.{/if}
+      {if:speedrun-manhunt:start-in-circle}Evenly around one circle, facing the middle, Runners together and Hunters together; it grows with the player count, around the start point or world spawn.{else}At the lobby's start point, as in any run.{/if}
   - question: Do Runners glow?
     title: Glowing
-    when: manhunt:glowing-runners-every-minutes > 0
+    when: speedrun-manhunt:glowing-runners-every-minutes > 0
     text: |
-      Every <white>{setting:manhunt:glowing-runners-every-minutes|minutes}</white> every Runner glows through walls for {setting:manhunt:glowing-runners-seconds|seconds}, and everybody is warned ten seconds before.
+      Every <white>{setting:speedrun-manhunt:glowing-runners-every-minutes|minutes}</white> every Runner glows through walls for {setting:speedrun-manhunt:glowing-runners-seconds|seconds}, and everybody is warned ten seconds before.
   - question: May Hunters hit each other?
     title: Teammates
     text: |
-      {if:manhunt:hunters-fists-only}Only with bare fists: a sword, axe, bow or anything else does nothing to a teammate, and I mind my manners about it.{else}However they like. Please don't.{/if}
+      {if:speedrun-manhunt:hunters-fists-only}Only with bare fists: a sword, axe, bow or anything else does nothing to a teammate, and I mind my manners about it.{else}However they like. Please don't.{/if}
   - question: Why can nobody new join?
     title: The whitelist door
     text: |
-      {if:manhunt:close-whitelist-on-start}Starting a hunt shuts the server to anybody not already online and opens it again when the hunt ends — only a whitelist this closed itself is reopened.{else}A hunt leaves the server's door exactly as the owner set it.{/if}
+      {if:speedrun-manhunt:close-whitelist-on-start}Starting a hunt shuts the server to anybody not already online and opens it again when the hunt ends — only a whitelist this closed itself is reopened.{else}A hunt leaves the server's door exactly as the owner set it.{/if}
   - question: What does /whitelist open and close do?
     title: /whitelist
     permission: rainsmanhunt.manhunt.whitelist

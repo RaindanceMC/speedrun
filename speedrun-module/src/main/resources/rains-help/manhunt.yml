@@ -20,27 +20,27 @@ sections:
   - question: How do I pick a side?
     title: Picking a side
     text: |
-      {cmd:/manhunt join runner} or {cmd:/manhunt join hunter}. {if:manhunt:runner-self-join}Anybody may run.{else}Only an admin picks the Runners on this server; everybody else hunts.{/if} Nobody on a side hunts by default. {cmd:/manhunt leave} takes you off the Runners. Needs <white>rainsmanhunt.manhunt.use</white>, which everybody has.
+      {cmd:/manhunt join runner} or {cmd:/manhunt join hunter}. {if:speedrun-manhunt:runner-self-join}Anybody may run.{else}Only an admin picks the Runners on this server; everybody else hunts.{/if} Nobody on a side hunts by default. {cmd:/manhunt leave} takes you off the Runners. Needs <white>rainsmanhunt.manhunt.use</white>, which everybody has.
   - question: Can I change sides during a hunt?
     title: Switching
     text: |
-      {if:manhunt:side-switching-mid-hunt}Yes: a Runner who gives up becomes a Hunter with a compass, and a Hunter who takes up the chase loses theirs.{else}No: once the clock starts the sides are fixed and only an admin can move anybody. They are yours to pick again after the hunt. {cmd:/manhunt leave} still takes you out of the hunt entirely, carrying none of its compasses.{/if}
+      {if:speedrun-manhunt:side-switching-mid-hunt}Yes: a Runner who gives up becomes a Hunter with a compass, and a Hunter who takes up the chase loses theirs.{else}No: once the clock starts the sides are fixed and only an admin can move anybody. They are yours to pick again after the hunt. {cmd:/manhunt leave} still takes you out of the hunt entirely, carrying none of its compasses.{/if}
   - question: How do I see how it stands?
     title: Status
     text: |
-      {cmd:/manhunt status} says who is running, who hunts, how many Runners are still free, how many were caught. During a hunt a sidebar shows the Runners (hearts, where they are, caught or offline) and how many Hunters are online, plus your own role{if:manhunt:runner-lives > 1} and lives left{/if}.
+      {cmd:/manhunt status} says who is running, who hunts, how many Runners are still free, how many were caught. During a hunt a sidebar shows the Runners (hearts, where they are, caught or offline) and how many Hunters are online, plus your own role{if:speedrun-manhunt:runner-lives > 1} and lives left{/if}.
   - question: How is a Runner caught?
     title: Getting caught
     text: |
-      {if:manhunt:runner-lives == 1}One death catches a Runner.{else}A Runner is caught after dying <white>{setting:manhunt:runner-lives|count}</white> times; until then they respawn and run on, and everybody is told how many lives are left.{/if} A Runner who stays logged out{if:manhunt:runner-offline-grace-seconds > 0} longer than {setting:manhunt:runner-offline-grace-seconds|seconds} counts as caught too — coming back in time costs nothing{else} is never caught for being away{/if}. Hunters may stay away as long as they like; the hunt goes on without them. The last Runner caught ends it as the Hunters' win.
+      {if:speedrun-manhunt:runner-lives == 1}One death catches a Runner.{else}A Runner is caught after dying <white>{setting:speedrun-manhunt:runner-lives|count}</white> times; until then they respawn and run on, and everybody is told how many lives are left.{/if} A Runner who stays logged out{if:speedrun-manhunt:runner-offline-grace-seconds > 0} longer than {setting:speedrun-manhunt:runner-offline-grace-seconds|seconds} counts as caught too — coming back in time costs nothing{else} is never caught for being away{/if}. Hunters may stay away as long as they like; the hunt goes on without them. The last Runner caught ends it as the Hunters' win.
   - question: What happens when I am caught?
     title: After the catch
     text: |
-      Out of the hunt for good: you watch. Hunters who die respawn{if:manhunt:hunter-respawn-delay-seconds > 0} and stand still for {setting:manhunt:hunter-respawn-delay-seconds|seconds} before rejoining the chase{/if}. Everybody gets a summary at the end{if:manhunt:summary-in-chat}, in chat, with a button to the full page{/if}.
+      Out of the hunt for good: you watch. Hunters who die respawn{if:speedrun-manhunt:hunter-respawn-delay-seconds > 0} and stand still for {setting:speedrun-manhunt:hunter-respawn-delay-seconds|seconds} before rejoining the chase{/if}. Everybody gets a summary at the end{if:speedrun-manhunt:summary-in-chat}, in chat, with a button to the full page{/if}.
   - question: What if I join a hunt that has started?
     title: Latecomers
     text: |
-      That depends on the lobby's late-join setting (now <white>{setting:speedrun:late-join}</white>). With RACE you join the side {if:manhunt:late-joiner-side == HUNTER}of the Hunters, never the Runners{/if}{if:manhunt:late-joiner-side == RUNNER}of the Runners{/if}{if:manhunt:late-joiner-side == SMALLER_SIDE}that has fewer players (a tie goes to the Hunters){/if}, with the usual lives and offline grace. While a hunt keeps the whitelist closed, nobody new gets in at all.
+      That depends on the lobby's late-join setting (now <white>{setting:speedrun:late-join}</white>). With RACE you join the side {if:speedrun-manhunt:late-joiner-side == HUNTER}of the Hunters, never the Runners{/if}{if:speedrun-manhunt:late-joiner-side == RUNNER}of the Runners{/if}{if:speedrun-manhunt:late-joiner-side == SMALLER_SIDE}that has fewer players (a tie goes to the Hunters){/if}, with the usual lives and offline grace. While a hunt keeps the whitelist closed, nobody new gets in at all.
   - question: Can I show others where I am?
     title: Sharing position
     text: |

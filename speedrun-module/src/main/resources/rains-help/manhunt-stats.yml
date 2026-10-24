@@ -14,7 +14,7 @@ sections:
   - question: Are hunts recorded?
     title: Stats
     text: |
-      {if:manhunt:stats-enabled}Yes: every hunt is added to each player's stats and moves their rating. {cmd:/manhunt stats <player>} shows rating, hunts, wins as Runner and as Hunter, catches and more.{else}Not right now — hunts are not added to stats on this server (what was kept stays).{/if}
+      {if:speedrun-manhunt:stats-enabled}Yes: every hunt is added to each player's stats and moves their rating. {cmd:/manhunt stats <player>} shows rating, hunts, wins as Runner and as Hunter, catches and more.{else}Not right now — hunts are not added to stats on this server (what was kept stays).{/if}
   - question: Where is the leaderboard?
     title: Leaderboard
     text: |

@@ -64,8 +64,10 @@ class SettingsReachabilityTest {
     @Test
     @DisplayName("one tree: Manhunt's pages sit under the lobby's own, not beside it")
     void frontPage() {
-        assertThat(pathsOf(navigation.page(null).subtopics())).contains("speedrun").doesNotContain("manhunt");
-        assertThat(pathsOf(navigation.page("speedrun").subtopics())).contains("speedrun/manhunt");
+        // Core shows one door per plugin, and every record whose id starts "speedrun-" is behind Speedrun's.
+        assertThat(pathsOf(navigation.page(null).subtopics())).containsExactly("speedrun:");
+        assertThat(pathsOf(navigation.page("speedrun").subtopics()))
+                .anyMatch(path -> path.endsWith("speedrun/manhunt"));
     }
 
     @Test

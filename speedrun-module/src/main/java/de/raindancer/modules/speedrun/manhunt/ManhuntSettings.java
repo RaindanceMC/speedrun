@@ -18,7 +18,7 @@ import org.bukkit.Material;
  * the reset are {@code speedrun.yml}'s, in one place, for both games. What is left here is what only
  * a hunt has: the compass, who may pick a side, and the door.
  */
-@Settings(id = "manhunt", topics = {
+@Settings(id = "speedrun-manhunt", topics = {
         @Topic(path = "speedrun/manhunt", title = "Manhunt", icon = Material.TARGET,
                 description = "Runners against Hunters, played in the speedrun lobby."),
         @Topic(path = "speedrun/manhunt/tracker", title = "The tracking compass", icon = Material.COMPASS,

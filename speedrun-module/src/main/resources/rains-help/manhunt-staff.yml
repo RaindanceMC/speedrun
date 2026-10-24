@@ -19,7 +19,7 @@ sections:
   - question: Can the server pick fairly?
     title: Random and balance
     text: |
-      {cmd:/manhunt random [number]} draws that many Runners by lot (one by default). {cmd:/manhunt balance} splits the lobby by rating (up to {if:manhunt:balance-max-runners > 0}{setting:manhunt:balance-max-runners|count} Runners{else}a third of the lobby{/if}) and says the Runners' chance. It takes two players at least.
+      {cmd:/manhunt random [number]} draws that many Runners by lot (one by default). {cmd:/manhunt balance} splits the lobby by rating (up to {if:speedrun-manhunt:balance-max-runners > 0}{setting:speedrun-manhunt:balance-max-runners|count} Runners{else}a third of the lobby{/if}) and says the Runners' chance. It takes two players at least.
   - question: How do I start, resume or check a hunt?
     title: Starting
     text: |
@@ -35,4 +35,4 @@ sections:
   - question: How do I set the door and presets?
     title: Door & presets
     text: |
-      {cmd:/manhunt door keep-open} or {cmd:/manhunt door close-on-start} (now {setting:manhunt:close-whitelist-on-start|onoff}). {cmd:/manhunt setup classic} or {cmd:casual} applies a preset — classic is one life, the real thing; casual gives two lives and a team compass. Everything stays changeable in {cmd:/settings}.
+      {cmd:/manhunt door keep-open} or {cmd:/manhunt door close-on-start} (now {setting:speedrun-manhunt:close-whitelist-on-start|onoff}). {cmd:/manhunt setup classic} or {cmd:casual} applies a preset — classic is one life, the real thing; casual gives two lives and a team compass. Everything stays changeable in {cmd:/settings}.
