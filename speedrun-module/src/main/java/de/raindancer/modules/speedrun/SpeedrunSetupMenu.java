@@ -1,5 +1,6 @@
 package de.raindancer.modules.speedrun;
 
+import de.raindancer.core.ui.menu.Arrow;
 import de.raindancer.core.ui.menu.Icons;
 import de.raindancer.core.ui.menu.Menu;
 import de.raindancer.core.ui.menu.MenuLayout;
@@ -215,17 +216,17 @@ public final class SpeedrunSetupMenu extends Menu {
                 band(MenuLayout.WHO, 3, Icons.of(Material.LIME_CONCRETE, "<green>Run the pre-flight check",
                                 "<gray>Everything a start needs, with one-click fixes."),
                         click -> new SpeedrunPreflightMenu(lobby, viewer, parent()).open());
-                band(MenuLayout.WHO, 5, Icons.of(Material.COMPASS, "<white>Back to the menu",
+                band(MenuLayout.WHO, 5, Icons.arrow(Arrow.BACK, "<white>Back to the menu",
                                 "<gray>The setup is saved."),
                         click -> backToWhoeverOpenedThis());
             }
         }
         if (at > 0) {
-            toolbar(2, Icons.of(Material.ARROW, "<white>Previous question"),
+            toolbar(2, Icons.arrow(Arrow.LEFT, "<white>Previous question"),
                     click -> new SpeedrunSetupMenu(lobby, viewer, parent(), at - 1).open());
         }
         if (step != Step.DONE) {
-            toolbar(6, Icons.of(Material.SPECTRAL_ARROW, "<white>Keep it as it is", "<gray>Next question."),
+            toolbar(6, Icons.arrow(Arrow.RIGHT, "<white>Keep it as it is", "<gray>Next question."),
                     click -> new SpeedrunSetupMenu(lobby, viewer, parent(), at + 1).open());
         }
     }
