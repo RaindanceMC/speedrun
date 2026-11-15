@@ -59,8 +59,6 @@ public final class SpeedrunModule implements FlexModule {
         context.core().messages().defineFrom(
                 SpeedrunModule.class.getResourceAsStream("messages.yml"),
                 context.chat().brand()::chatPrefix);
-        // The same lines said plainly, for a server whose Message tone is SERIOUS.
-        context.core().messages().seriousFrom(SpeedrunModule.class.getResourceAsStream("messages-serious.yml"));
 
         // Before anything reads a file: Manhunt's data from the plugin it used to be, carried over once.
         ManhuntMigration.run(context.dataFolder());
