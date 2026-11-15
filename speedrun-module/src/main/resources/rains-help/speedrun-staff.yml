@@ -1,8 +1,8 @@
 id: speedrun-staff
 title: Speedrun (staff)
-summary: Setting up the lobby, starting, resetting and resuming runs, and fixing a clock.
+summary: "Setting up the lobby, starting, resetting and resuming runs, and fixing a clock."
 intro: |
-  The buttons that decide everybody else's evening.
+  Setting up the lobby and controlling runs.
 icon: LODESTONE
 category: Staff
 order: 10
@@ -24,7 +24,7 @@ sections:
   - question: How do I check a start will work?
     title: Pre-flight
     text: |
-      {cmd:/speedrun check} lists what a start needs — ready lobby, world and dimensions, a goal that exists, racers present, the game installed, a practice kit warning, an incomplete seed setting — each failing line with a one-click fix (reset, create worlds, plain race, dragon goal, bring everybody, switch the kit off, random seeds).
+      {cmd:/speedrun check} lists what a start needs: a ready lobby, world and dimensions, a goal that exists, racers present, the game installed, a practice kit warning and an incomplete seed setting. Each failing line has a one-click fix (reset, create worlds, plain race, dragon goal, bring everybody, switch the kit off, random seeds).
   - question: How do I end a run and remake the world?
     title: Reset
     text: |
@@ -36,13 +36,13 @@ sections:
   - question: How do I fix the clock?
     title: Set the clock
     text: |
-      {cmd:/speedruntime <time>} sets the running clock — 42:05, 1:02:03 or 1h30m. It only works while a run is on, and the run is then flagged as edited.
+      {cmd:/speedruntime <time>} sets the running clock, for example 42:05, 1:02:03 or 1h30m. It only works while a run is on, and the run is then flagged as edited.
   - question: How do I release or refreeze others?
     title: Releasing others
     permission: rainsspeedrun.lemmemove.others
     text: |
-      {cmd:/lemmemove <player>} lifts somebody else's movement freeze (it can hand out a head start, hence its own permission); {cmd:/freezeagain <player>} undoes that. A release lasts until the lobby resets.
+      {cmd:/lemmemove <player>} lifts somebody else's movement freeze (it can give a head start, so it has its own permission), {cmd:/freezeagain <player>} undoes that. A release lasts until the lobby resets.
   - question: What can I switch on or off?
     title: Settings
     text: |
-      Lobby rules: players hurt in the lobby ({setting:speedrun:lobby-protected|onoff} protected), explosions blocked ({setting:speedrun:lobby-explosions-blocked|onoff}), block use before runs ({setting:speedrun:breaking-blocks-before-runs|onoff}), mobs targeting before runs ({setting:speedrun:monsters-hunt-before-runs|onoff}), start block for staff only ({setting:speedrun:start-block-staff-only|onoff}), automatic reset ({setting:speedrun:restart-when-run-ends|onoff}, after {setting:speedrun:restart-after-seconds|seconds}). Late joiners: {setting:speedrun:late-join}. Hazards, explosives, seeds, practice kit and fees are listed on the player pages. Everyone but admins is exempt from none of it; an admin may build in the lobby before a run.
+      Lobby rules: players hurt in the lobby ({setting:speedrun:lobby-protected|onoff} protected), explosions blocked ({setting:speedrun:lobby-explosions-blocked|onoff}), block use before runs ({setting:speedrun:breaking-blocks-before-runs|onoff}), mobs targeting before runs ({setting:speedrun:monsters-hunt-before-runs|onoff}), start block for staff only ({setting:speedrun:start-block-staff-only|onoff}), automatic reset ({setting:speedrun:restart-when-run-ends|onoff}, after {setting:speedrun:restart-after-seconds|seconds}). Late joiners: {setting:speedrun:late-join}. Hazards, explosives, seeds, practice kit and fees are listed on the player pages. These rules apply to everyone except admins. An admin may build in the lobby before a run.

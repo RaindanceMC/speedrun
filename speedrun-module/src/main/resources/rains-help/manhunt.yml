@@ -1,8 +1,8 @@
 id: manhunt
 title: Manhunt
-summary: Runners against Hunters — pick a side, how a hunt is won, and what happens when you are caught.
+summary: "Runners against Hunters: pick a side, how a hunt is won, and what happens when you are caught."
 intro: |
-  A few people run. Everybody else chases them with a compass and bad intentions. Splendid, honestly.
+  A few players run. Everybody else chases them with a compass.
 icon: TARGET
 category: Games
 order: 20
@@ -32,11 +32,11 @@ sections:
   - question: How is a Runner caught?
     title: Getting caught
     text: |
-      {if:speedrun-manhunt:runner-lives == 1}One death catches a Runner.{else}A Runner is caught after dying <white>{setting:speedrun-manhunt:runner-lives|count}</white> times; until then they respawn and run on, and everybody is told how many lives are left.{/if} A Runner who stays logged out{if:speedrun-manhunt:runner-offline-grace-seconds > 0} longer than {setting:speedrun-manhunt:runner-offline-grace-seconds|seconds} counts as caught too — coming back in time costs nothing{else} is never caught for being away{/if}. Hunters may stay away as long as they like; the hunt goes on without them. The last Runner caught ends it as the Hunters' win.
+      {if:speedrun-manhunt:runner-lives == 1}One death catches a Runner.{else}A Runner is caught after dying <white>{setting:speedrun-manhunt:runner-lives|count}</white> times; until then they respawn and run on, and everybody is told how many lives are left.{/if} A Runner who stays logged out{if:speedrun-manhunt:runner-offline-grace-seconds > 0} longer than {setting:speedrun-manhunt:runner-offline-grace-seconds|seconds} counts as caught too. Coming back in time costs nothing{else} is never caught for being away{/if}. Hunters may stay away as long as they like. The hunt goes on without them. The last Runner caught ends it as the Hunters' win.
   - question: What happens when I am caught?
     title: After the catch
     text: |
-      Out of the hunt for good: you watch. Hunters who die respawn{if:speedrun-manhunt:hunter-respawn-delay-seconds > 0} and stand still for {setting:speedrun-manhunt:hunter-respawn-delay-seconds|seconds} before rejoining the chase{/if}. Everybody gets a summary at the end{if:speedrun-manhunt:summary-in-chat}, in chat, with a button to the full page{/if}.
+      You are out of the hunt and you watch. Hunters who die respawn{if:speedrun-manhunt:hunter-respawn-delay-seconds > 0} and stand still for {setting:speedrun-manhunt:hunter-respawn-delay-seconds|seconds} before rejoining the chase{/if}. Everybody gets a summary at the end{if:speedrun-manhunt:summary-in-chat}, in chat, with a button to the full page{/if}.
   - question: What if I join a hunt that has started?
     title: Latecomers
     text: |
@@ -44,4 +44,4 @@ sections:
   - question: Can I show others where I am?
     title: Sharing position
     text: |
-      {cmd:/manhunt here} tells your side where you are — the world and coordinates, with a button that shows the way; the clicker is guided until they arrive or type {cmd:/manhunt here stop}.
+      {cmd:/manhunt here} tells your side where you are: the world and coordinates, with a button that shows the way. Whoever clicks it is guided until they arrive or type {cmd:/manhunt here stop}.

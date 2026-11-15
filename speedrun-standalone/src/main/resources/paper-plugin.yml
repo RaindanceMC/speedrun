@@ -5,7 +5,7 @@ version: '${plugin.version}'
 main: de.raindancer.modules.wrapper.ModulePlugin
 bootstrapper: de.raindancer.modules.wrapper.ModuleBootstrap
 api-version: '26.3'
-description: 'A speedrun lobby with Manhunt built in: pick a goal, a game and the rules from one hub, then press the green block to race — splits, history and leaderboards for every run, and a fresh world once the last racer has left.'
+description: 'A speedrun lobby with Manhunt built in: pick a goal, a game and the rules from one hub, then press the green block to race. Every run has splits, history and leaderboards, and the world is remade once the last racer has left.'
 author: Raindancer118
 website: https://github.com/Raindancer118/RainsCore
 
