@@ -10,13 +10,13 @@ speedrun:
     # A run is already counting down, running, paused or waiting to reset.
     not-ready: "<yellow>A run is already under way."
     # Nobody has set an advancement goal or a death policy — see the compass's menu.
-    no-end-condition: "<yellow>Nothing is set to end the run yet — open the menu and pick one. A race with no finish line is just a walk."
+    no-end-condition: "<yellow>Nothing is set to end the run yet. Open the menu and pick a goal or a death rule."
     # Should not really happen: whoever pressed it counts as a participant.
-    no-participants: "<yellow>Nobody is here to race. A very short and very lonely run."
+    no-participants: "<yellow>Nobody is here to race."
     # game-mode names a mode whose plugin is not installed — RainsManhunt, say.
     mode-missing: "<red>This lobby is set to play <white><mode></white>, and that plugin is not installed. Pick another game in the menu, or install it."
     # The mode's own setup threw. The console says what; this is what the player sees.
-    mode-failed: "<red>The game mode could not start. The lobby is ready again — an admin should look at the console."
+    mode-failed: "<red>The game mode could not start. The lobby is ready again. An admin should check the console."
     # Somebody without rainsspeedrun.start pressed a start block anyway — one they kept, picked up
     # or was given. Says whose call it is rather than "nothing happened".
     not-allowed: "<yellow>Only staff can start a run here."
@@ -32,23 +32,23 @@ speedrun:
     # Picking an advancement in the chooser.
     set: "<green>Advancement goal set to <white><advancement></white>."
     # Pressing "No advancement goal" in the chooser.
-    cleared: "<yellow>Advancement goal cleared — a death is now the only way a run can end."
+    cleared: "<yellow>Advancement goal cleared. A death is now the only way a run can end."
   # Sent to every participant still online the moment a run ends, so they hear what settled it and
   # how long it took even if they were not looking at a boss bar or a scoreboard.
-  finished: "<gold>Run finished! <white><reason></white> — <white><time></white>."
+  finished: "<gold>Run finished: <white><reason></white>, <white><time></white>."
   lemmemove:
     done: "<green>Released <white><player></white> from the movement freeze."
-    no-permission-for-others: "<red>You may only release yourself — not somebody else."
+    no-permission-for-others: "<red>You may only release yourself, not somebody else."
     player-not-found: "<red>No online player named <white><player></white>."
     console-needs-a-player: "<red>Console must name a player: /lemmemove <player>."
   # Undoing one of those — /freezeagain. Its own branch rather than a second line under lemmemove:
   # what is said about taking a head start back is not what is said about handing one out.
   freezeagain:
-    done: "<green>Froze <white><player></white> again — the movement freeze applies to them once more."
+    done: "<green>Froze <white><player></white> again. The movement freeze applies to them once more."
     # A release nobody had. Said rather than confirmed: a typo'd name is the likeliest way to get
     # here, and a cheerful "done" is how somebody walks away believing a head start was taken back.
     not-released: "<yellow><player> was not released from the movement freeze; there was nothing to undo."
-    no-permission-for-others: "<red>You may only freeze yourself again — not somebody else."
+    no-permission-for-others: "<red>You may only freeze yourself again, not somebody else."
     player-not-found: "<red>No online player named <white><player></white>."
     console-needs-a-player: "<red>Console must name a player: /freezeagain <player>."
   starthere:
@@ -56,31 +56,31 @@ speedrun:
     wrong-world: "<yellow>This only sets a start point in <white><world></white>."
     # Says out loud that it does not survive a reset: the coordinates are in a world the reset
     # deletes, and the one that comes back is generated from a new seed.
-    done: "<green>Start point set — every racer will be teleported here when a countdown begins. <gray>It is forgotten when the world resets."
+    done: "<green>Start point set. Every racer is teleported here when a countdown begins. <gray>It is forgotten when the world resets."
   reset:
     # Chat confirmation, with a [Yes] button after it that expires.
     confirm: "<red>This deletes <white><world></white>, its nether and its End and makes new ones. Sure?"
     console-confirm: "<yellow>This deletes the run's worlds. Type <white>/speedrun reset confirm</white> to do it."
     done: "<green>The run has been ended and the world is being deleted and remade."
-    countdown-in-progress: "<yellow>A countdown is already under way; let it finish, or let it start, then reset."
+    countdown-in-progress: "<yellow>A countdown is already under way. Let it finish, then reset."
   # /speedrunresume — a run over the world as it stands, after a restart.
   resume:
     # Plain text: the title of the window it is typed into.
     ask: "Time the run had reached"
     done: "<green>Run resumed at <white><time></white> with <white><players></white> player(s), where they stand and with what they carry."
-    not-ready: "<yellow>A run is already under way or counting down — only a ready or finished lobby can be resumed."
+    not-ready: "<yellow>A run is already under way or counting down. Only a ready or finished lobby can be resumed."
   # /speedruntime and /speedrunresume's time.
   time:
     # Plain text: a window's title from the hub, the question in chat from /speedrun time.
     ask: "Time the clock should read"
-    usage: "<yellow>/speedruntime <time> — e.g. 42:05, 1:02:03 or 1h30m"
-    unreadable: "<red><white><time></white> is not a time. Try 42:05, 1:02:03 or 1h30m."
+    usage: "<yellow>/speedruntime <time>, for example 42:05, 1:02:03 or 1h30m"
+    unreadable: "<red><white><time></white> is not a time. Use 42:05, 1:02:03 or 1h30m."
     set: "<green>The run's clock now reads <white><time></white>."
     no-run: "<yellow>No run is being played, so there is no clock to set."
   spectate:
     only-a-player: "<red>Only a player can register as not racing."
-    "on": "<yellow>You are now registered as not racing — pressing the start block will skip you."
-    "off": "<green>You are racing again — pressing the start block will include you."
+    "on": "<yellow>You are registered as not racing. Pressing the start block skips you."
+    "off": "<green>You are racing again. Pressing the start block includes you."
   join:
     only-a-player: "<red>Only a player can go to the speedrun lobby."
     # Sent after /speedrun took somebody to the lobby; a button to the menu follows it.
@@ -89,18 +89,18 @@ speedrun:
   # Asking somebody to type something in chat.
   # /speedrun with a word after it.
   command:
-    unknown: "<yellow><white><word></white> is not something /speedrun does. Here is what it does instead:"
+    unknown: "<yellow>/speedrun has no <white><word></white>. These are the commands:"
     # A typo close to a word the sender may use.
-    did-you-mean: "<yellow>No <white>/speedrun <word></white> — did you mean <click:run_command:'/speedrun <guess>'><hover:show_text:'Run it'><u>/speedrun <guess></u></hover></click>?"
+    did-you-mean: "<yellow>No <white>/speedrun <word></white>. Did you mean <click:run_command:'/speedrun <guess>'><hover:show_text:'Run it'><u>/speedrun <guess></u></hover></click>?"
     staff-only: "<red>/speedrun <word> is for staff."
     no-permission: "<red>You may not use /speedrun <word> here."
-    only-a-player: "<red>That one opens a menu — it needs a player."
+    only-a-player: "<red>That opens a menu, so it needs a player."
     no-such-player: "<red>Nobody called <white><player></white> has played here."
-    player-offline: "<red><white><player></white> is offline right now. Their head start will have to wait for them."
-    too-many: "<red><white><player></white> matches <white><count></white> players - pick one."
-    selector-refused: "<red>Selectors like <white><player></white> are not yours to use here - or they are not written right. Type a name instead."
-    help-header: "<gold>/speedrun — everything the lobby does:"
-    help-line: "<white><usage></white> <gray>— <what>"
+    player-offline: "<red><white><player></white> is offline."
+    too-many: "<red><white><player></white> matches <white><count></white> players. Pick one."
+    selector-refused: "<red>Selectors like <white><player></white> are not allowed here, or are not written correctly. Type a name instead."
+    help-header: "<gold>/speedrun commands:"
+    help-line: "<white><usage></white><gray>: <what>"
   # What a one-click fix says once it is done.
   fix:
     worlds-created: "<green>The run's worlds are there now."
@@ -112,7 +112,7 @@ speedrun:
   # Where somebody sees their splits.
   hud:
     now: "<green>Your splits are shown: <white><place></white>."
-    unknown: "<red><white><place></white> is not a place — sidebar, bossbar, actionbar or off."
+    unknown: "<red><white><place></white> is not a place. Use sidebar, bossbar, actionbar or off."
   # Every split, the moment it happens; how it compares follows in colour.
   split:
     reached: "<gray>Split <white><milestone></white> at <yellow><time></yellow>"
@@ -120,27 +120,27 @@ speedrun:
     # A title on every split, in a game that asks for it (Manhunt); each player can switch them off.
     title: "<yellow><milestone>"
     subtitle: "<white><player></white> <gray>at <time>"
-    gold-title: "<gold>Gold split!"
-    gold-subtitle: "<yellow><milestone></yellow> <white><time></white> — faster than ever"
+    gold-title: "<gold>Gold split"
+    gold-subtitle: "<yellow><milestone></yellow> <white><time></white>, faster than ever"
   # Somebody joining a run under way — see late-join.
   late-join:
-    racing: "<green>You join the run at <white><time></white>. <gray>It is kept in your history, but a run you joined late is never a best of yours."
+    racing: "<green>You join the run at <white><time></white>. <gray>It is kept in your history, but a run you joined late never counts as your best."
     joined: "<gray><white><player></white> joined the run at <white><time></white>."
-    watching: "<gray>A run is under way — you are watching. <white>You can play once it is over."
-    next-start: "<green>A run is about to start — you race in it."
-    cannot-pay: "<yellow>You cannot pay the entry fee, so you only look on."
+    watching: "<gray>A run is under way and you are watching. <white>You can play once it is over."
+    next-start: "<green>A run is about to start. You race in it."
+    cannot-pay: "<yellow>You cannot pay the entry fee, so you can only watch."
   # The entry fee and the prize pot — see economy.entry-fee.
   entry:
     cannot-pay: "<yellow>The entry fee of <white><amount></white> cannot be paid."
     paid: "<gray>Entry fee of <white><amount></white> paid. <gray>The pot is <white><pot></white>."
     refunded: "<green>Your entry fee of <white><amount></white> was returned."
     prize: "<gold>Your prize: <white><amount></white>."
-    prize-refused: "<yellow>Your prize of <white><amount></white> could not be paid out right now. Staff have it in the log."
+    prize-refused: "<yellow>Your prize of <white><amount></white> could not be paid out. Staff can see it in the log."
   # What a racer is told once a run is over and kept.
   result:
-    record: "<gold>New server record: <white><time></white> in <category>!"
-    personal-best: "<green>New personal best: <white><time></white> in <category>!"
-    behind: "<gray>Your best in <category> is <white><best></white> — this one was <white><behind></white> slower."
+    record: "<gold>New server record: <white><time></white> in <category>."
+    personal-best: "<green>New personal best: <white><time></white> in <category>."
+    behind: "<gray>Your best in <category> is <white><best></white>. This run was <white><behind></white> slower."
     not-ranked: "<gray>Kept in the history, but not ranked: <reason>."
     seed: "<gray>Seed: <white><seed></white>"
   seed:
@@ -155,25 +155,25 @@ speedrun:
     offer: "<gold>The speedrun lobby has not been set up yet."
   stats:
     none: "<gray><player> has not raced here yet."
-    header: "<gold><player></gold> <gray>— <runs> run(s), <finished> reached the goal"
+    header: "<gold><player></gold> <gray>: <runs> run(s), <finished> reached the goal"
     best: "<white><category></white> <gray>best <gold><time></gold>, record <white><record></white>"
   top:
-    header: "<gold>Leaderboard — <category>"
+    header: "<gold>Leaderboard: <category>"
 
 # Manhunt — Runners against Hunters, one of the games this lobby plays.
 manhunt:
   # Somebody typed a word /manhunt does not have.
-  did-you-mean: "<yellow>No <white>/manhunt <word></white> — did you mean <click:run_command:'/manhunt <guess>'><hover:show_text:'Run it'><u>/manhunt <guess></u></hover></click>?"
-  unknown-word: "<yellow>No such thing as <white><word></white>. Everything is on one page: <click:run_command:'/manhunt'><hover:show_text:'Open Manhunt'><u>[Open Manhunt]</u></hover></click>"
+  did-you-mean: "<yellow>No <white>/manhunt <word></white>. Did you mean <click:run_command:'/manhunt <guess>'><hover:show_text:'Run it'><u>/manhunt <guess></u></hover></click>?"
+  unknown-word: "<yellow>No such thing as <white><word></white>. It is all on one page: <click:run_command:'/manhunt'><hover:show_text:'Open Manhunt'><u>[Open Manhunt]</u></hover></click>"
   # A command that only makes sense for somebody standing in the world.
   only-a-player: "<red>Only a player can do that."
   # /manhunt assign, without the permission for it.
-  not-yours: "<red>That is not yours to do."
-  player-offline: "<red><white><player></white> is offline right now. Come back when they are around."
-  too-many: "<red><white><player></white> matches <white><count></white> players - pick one."
-  selector-refused: "<red>Selectors like <white><player></white> are not yours to use here - or they are not written right. Type a name instead."
+  not-yours: "<red>You cannot do that."
+  player-offline: "<red><white><player></white> is offline."
+  too-many: "<red><white><player></white> matches <white><count></white> players. Pick one."
+  selector-refused: "<red>Selectors like <white><player></white> are not allowed here, or are not written correctly. Type a name instead."
   # /manhunt assign <player>, where nobody by that name is online.
-  no-such-player: "<red>No online player named <white><player></white>. Everybody here is on the hub: <click:run_command:'/manhunt sides'><hover:show_text:'Everybody in the lobby'><u>[Sides]</u></hover></click>"
+  no-such-player: "<red>No online player named <white><player></white>. Everybody is on this page: <click:run_command:'/manhunt sides'><hover:show_text:'Everybody in the lobby'><u>[Sides]</u></hover></click>"
   # Sides cannot change while a hunt is being played — see Hunt on why the roster is a snapshot.
   sides-frozen: "<yellow>A hunt is under way. Sides go back to being yours to pick once it ends. <click:run_command:'/manhunt status'><hover:show_text:'How the hunt stands'><u>[Status]</u></hover></click>"
   # /manhunt leave — leaving the Runners is joining the pack, which is what this says.
@@ -192,7 +192,7 @@ manhunt:
     removed-mid-hunt: "<green>The goal is removed from this hunt. It now ends when the last Runner is caught, or by reset."
     no-lobby: "<red>The speedrun lobby is not running."
     set: "<green>The Runners now race for <white><goal></white>."
-    set-next: "<green>The next hunt races for <white><goal></white> — this one keeps its own."
+    set-next: "<green>The next hunt races for <white><goal></white>. This one keeps its own goal."
     unknown: "<red><white><goal></white> is no advancement this server has. <click:run_command:'/manhunt goal'><hover:show_text:'Pick one from a list'><u>[Pick one]</u></hover></click>"
   start:
     # Under every refused start, with the page that names what is missing and how to fix it.
@@ -202,9 +202,9 @@ manhunt:
     no-hunter: "<yellow>Everybody here is a Runner. <click:run_command:'/manhunt join hunter'><hover:show_text:'Hunt instead'><u>[Hunt]</u></hover></click> <click:run_command:'/manhunt balance'><hover:show_text:'Admins: split the lobby by rating'><u>[Balance]</u></hover></click>"
   join:
     which-side: "<yellow>Which side? <click:run_command:'/manhunt join runner'><hover:show_text:'Join the Runners'><u>[Run]</u></hover></click> <click:run_command:'/manhunt join hunter'><hover:show_text:'Join the Hunters'><u>[Hunt]</u></hover></click>"
-    runner: "<green>You are running. Everybody else will be chasing you. Good luck."
+    runner: "<green>You are running. Everybody else is chasing you."
     hunter: "<red>You are hunting."
-    runners-locked: "<yellow>An admin picks the Runners on this server — everybody else hunts. <click:run_command:'/manhunt join hunter'><hover:show_text:'Join the Hunters'><u>[Hunt]</u></hover></click>"
+    runners-locked: "<yellow>An admin picks the Runners on this server. Everybody else hunts. <click:run_command:'/manhunt join hunter'><hover:show_text:'Join the Hunters'><u>[Hunt]</u></hover></click>"
   assign:
     usage: "<yellow>/manhunt assign, a player, then runner or hunter. <click:suggest_command:'/manhunt assign '><hover:show_text:'Puts the start of it in your chat box'><u>[Type it]</u></hover></click> <click:run_command:'/manhunt sides'><hover:show_text:'The sides page'><u>[Click them instead]</u></hover></click>"
     done: "<green><player> is now on the <white><side></white> side."
@@ -214,38 +214,38 @@ manhunt:
   side:
     changed: "<green><player> is now on the <white><side></white> side."
     already: "<yellow><player> is already on that side."
-    last-runner: "<yellow>Somebody has to be running — <white><player></white> is the last Runner left. A hunt with no prey is just a stroll."
-    last-hunter: "<yellow>Somebody has to be chasing — <white><player></white> is the last Hunter left."
-    not-in-hunt: "<yellow><player> is not in this hunt — an admin can bring them in. <click:suggest_command:'/manhunt assign '><hover:show_text:'Admins: bring somebody in'><u>[Assign]</u></hover></click>"
-    hunt-over: "<yellow>That hunt is over — the sides are yours to pick again."
+    last-runner: "<yellow><white><player></white> is the last Runner left. Somebody has to be running."
+    last-hunter: "<yellow><white><player></white> is the last Hunter left. Somebody has to be chasing."
+    not-in-hunt: "<yellow><player> is not in this hunt. An admin can add them. <click:suggest_command:'/manhunt assign '><hover:show_text:'Admins: bring somebody in'><u>[Assign]</u></hover></click>"
+    hunt-over: "<yellow>That hunt is over. You can pick your side again."
   reset:
-    done: "<green>Both sides are empty again — <white><players></white> player(s) were taken off one."
+    done: "<green>Both sides are empty again. <white><players></white> player(s) were taken off a side."
   status:
     waiting: "<gray>Running: <white><runners></white>. Hunting: <white><hunters></white>. <click:run_command:'/manhunt'><hover:show_text:'Open Manhunt'><u>[Open Manhunt]</u></hover></click>"
     running: "<gray>The hunt is on. Still running: <white><runners></white> (<out> caught), <white><hunters></white> hunting."
   # A Hunter hitting another Hunter with anything but a fist, with "Hunters only punch each other" on.
   # Said instead of Core's combat.fists-only — for Manhunt only, see Messages.overrideFor.
-  teammate-hit: "<red>Please don't kill your teammates!"
+  teammate-hit: "<red>Do not hit your teammates."
   # The second compass, pointing at your own side — see TeamCompassService.
   team-compass:
     given: "<aqua>You have been handed a team compass. It points at your own side."
-    distance: "<aqua><teammate> <gray>— <white><blocks></white> blocks"
+    distance: "<aqua><teammate> <gray>: <white><blocks></white> blocks"
     now-following: "<aqua>Your team compass follows <white><teammate></white>."
     now-nearest: "<aqua>Your team compass follows whichever teammate is nearest."
-    alone: "<yellow>Nobody else is on your side to point at. The compass is lonely."
+    alone: "<yellow>Nobody else is on your side to point at."
     picker-title: "Find a teammate"
   # /manhunt give <player> [tracker|team|structure] — never replaces or drops anything.
   give:
     usage: "<yellow>/manhunt give, a player or all, then optionally tracker, team or structure. <click:run_command:'/manhunt give all'><hover:show_text:'Everybody in the hunt gets what they are missing'><u>[Everybody]</u></hover></click> <click:suggest_command:'/manhunt give '><hover:show_text:'Puts the start of it in your chat box'><u>[Type it]</u></hover></click>"
     everybody: "<gray>Checked <white><players></white> player(s) in the hunt; whatever was handed out is listed above."
     unknown-kind: "<red>There is no <white><compass></white> compass. Try tracker, team or structure."
-    no-hunt: "<yellow>No hunt is being played, so there is nothing for a compass to point at. It would just spin."
+    no-hunt: "<yellow>No hunt is being played, so there is nothing for a compass to point at."
     given: "<green><white><player></white> has been handed the <white><compass></white> compass."
     switched-off: "<yellow>The <white><compass></white> compass is switched off in the settings."
-    not-theirs: "<yellow>The <white><compass></white> compass is not for <white><player></white> — wrong side, or out of the hunt."
+    not-theirs: "<yellow>The <white><compass></white> compass is not for <white><player></white>. They are on the wrong side or out of the hunt."
     already-has: "<yellow><white><player></white> already carries the <white><compass></white> compass."
-    no-room: "<red><white><player></white>'s inventory is full — clear a slot, nothing is pushed out for the <white><compass></white> compass."
-    nothing-missing: "<yellow><white><player></white> is not missing any compass. For once, nothing is lost."
+    no-room: "<red><white><player></white>'s inventory is full. Clear a slot first, the <white><compass></white> compass does not push anything out."
+    nothing-missing: "<yellow><white><player></white> is not missing any compass."
   # /manhunt here — the coordinates follow this line as a button.
   here:
     shared: "<white><player></white> <gray>is here, in the <white><world></white>:"
@@ -253,11 +253,11 @@ manhunt:
     not-navigating: "<gray>You are not being shown the way anywhere."
   # The Runners' structure compass — see StructureCompassService.
   structure:
-    given: "<gold>You have a structure compass. <gray>Right-click it to choose what it finds — once."
+    given: "<gold>You have a structure compass. <gray>Right-click it to choose what it finds. You can choose once."
     chosen: "<gold>Your compass points at the nearest <white><structure></white>."
     # Searched a few chunks a tick, so it can take a moment far from anything.
     searching: "<gray>Looking for the nearest <white><structure></white>…"
-    still-searching: "<yellow>Your compass is still looking — wait for its answer."
+    still-searching: "<yellow>Your compass is still searching. Wait for its answer."
     none: "<yellow>No <white><structure></white> anywhere near. Choose something else."
     # After a search that found nothing, the same Runner waits a moment before the next.
     wait: "<yellow>Try again in <white><seconds></white> second(s)."
@@ -270,8 +270,8 @@ manhunt:
     server-off: "<yellow>The particle trail is switched off on this server."
   # The Runners' head start, told to both sides.
   head-start:
-    begun: "<green>The Runners have a <white><seconds></white>-second head start. Hunters, hold still!"
-    over: "<red>The Hunters are loose!"
+    begun: "<green>The Runners have a <white><seconds></white>-second head start. Hunters, wait."
+    over: "<red>The Hunters are released."
   # A Runner has been caught, told to both sides.
   caught: "<red><runner> has been caught. <white><left></white> Runner(s) left."
   last-runner: "<red><runner> was the last Runner."
@@ -283,7 +283,7 @@ manhunt:
     stopped: "<yellow>The hunt ended. <white><time></white>."
   tracker:
     given: "<gold>You have been handed a tracking compass."
-    distance: "<gold><runner> <gray>— <white><blocks></white> blocks"
+    distance: "<gold><runner> <gray>: <white><blocks></white> blocks"
     now-following: "<gold>Following <white><runner></white>."
     now-nearest: "<gold>Following whoever is nearest."
     picking-off: "<yellow>Your compass is aimed for you on this server."
@@ -292,21 +292,21 @@ manhunt:
   whitelist:
     # Somebody with the door node only: open and close are theirs, the list itself is not.
     admin-only: "<red>Opening and closing is yours; changing who is on the whitelist is for admins."
-    opened: "<green>The server is open again — anybody can join."
+    opened: "<green>The server is open again. Anybody can join."
     closed: "<yellow>The server is closed. <white><added></white> player(s) were added to the whitelist first."
     unknown-command: "<yellow>No such whitelist option as <white><word></white>."
     # /whitelist clear — everybody off the list except the VIPs; the door itself is left as it was.
     cleared: "<green>Whitelist cleared: <white><removed></white> entry(s) removed, <white><vips></white> VIP(s) kept."
     vip:
       usage: "<yellow>/whitelist vip add or remove and a player, or /whitelist vip list. <click:run_command:'/whitelist vip list'><hover:show_text:'Who is a VIP'><u>[List them]</u></hover></click> <click:suggest_command:'/whitelist vip add '><hover:show_text:'Puts the start of it in your chat box'><u>[Add one]</u></hover></click>"
-      added: "<green><player> is a VIP now — a clear will not touch them, and a close lets them in."
+      added: "<green><player> is a VIP now. A clear keeps them, and a close lets them in."
       already: "<yellow><player> is already a VIP."
       removed: "<green><player> is no longer a VIP. Their whitelist entry is untouched."
       not-one: "<yellow><player> was not a VIP."
       list: "<gray>VIPs: <white><players></white>."
       none: "<gray>Nobody is a VIP yet."
   # A Runner with lives to spare died — see runner-lives.
-  life-lost: "<red><runner> lost a life — <white><lives></white> left."
+  life-lost: "<red><runner> lost a life. <white><lives></white> left."
   # A Hunter back from dying waits — see hunter-respawn-delay-seconds.
   respawn-hold: "<gray>You are back in the chase in <white><seconds></white> seconds."
   # The sidebar during a hunt — see HudLines for what each line is.
@@ -318,31 +318,31 @@ manhunt:
     runner-offline: "<dark_gray> <name> offline"
     more: "<dark_gray> …and <count> more"
     hunters: "<red>Hunters <gray>(<online>/<total> online)"
-    you-runner: "<gray>You run — <white><lives></white> life (lives) left"
+    you-runner: "<gray>You run: <white><lives></white> life (lives) left"
     you-hunter: "<gray>You hunt"
   # The boss bar during the head start.
   bar:
     head-start: "<yellow>The Hunters are held for <white><seconds></white>s"
   # glowing-runners-every-minutes.
   glow:
-    soon: "<yellow>The Runners glow in ten seconds!"
-    now: "<gold>The Runners glow for <white><seconds></white> seconds — look around!"
+    soon: "<yellow>The Runners glow in ten seconds."
+    now: "<gold>The Runners glow for <white><seconds></white> seconds."
   # /manhunt announcements — each player's own titles and sounds for splits.
   announcements:
     "on": "<green>Split titles and sounds are on."
     "off": "<yellow>Split titles and sounds are off for you. <click:run_command:'/manhunt announcements'><hover:show_text:'Turn them back on'><u>[Turn them on]</u></hover></click>"
   # The end-of-hunt summary in chat and /manhunt summary.
   summary:
-    header-runners: "<green>Hunt #<number> — the Runners won in <white><time></white>."
-    header-hunters: "<red>Hunt #<number> — the Hunters won in <white><time></white>."
-    header-nobody: "<yellow>Hunt #<number> — ended after <white><time></white>, won by nobody."
+    header-runners: "<green>Hunt #<number>: the Runners won in <white><time></white>."
+    header-hunters: "<red>Hunt #<number>: the Hunters won in <white><time></white>."
+    header-nobody: "<yellow>Hunt #<number>: ended after <white><time></white>, won by nobody."
     catch: "<gray> <time> <white><runner></white> caught by <white><by>"
     catch-away: "<gray> <time> <white><runner></white> stayed away too long"
     catch-died: "<gray> <time> <white><runner></white> died for the last time"
     mvp-hunter: "<gold> Hunter MVP: <white><name></white> <gray>(<catches> catch(es))"
     mvp-runner: "<gold> Runner MVP: <white><name></white> <gray>(ran <time>)"
     explorer: "<gold> Explorer: <white><name></white> <gray>(<blocks> blocks)"
-    more: "<gray> Every moment of it:"
+    more: "<gray> The full hunt:"
     open-button: "<aqua><u>[Open the summary]</u>"
     open-tooltip: "<gray>The whole hunt, page by page"
     none: "<yellow>There is no hunt #<number> on record. <click:run_command:'/manhunt history'><hover:show_text:'Past hunts'><u>[Past hunts]</u></hover></click>"
@@ -350,14 +350,14 @@ manhunt:
   settings-unavailable: "<red>The settings screen is not available right now. <click:run_command:'/settings'><hover:show_text:'The server settings'><u>[Try /settings]</u></hover></click>"
   # /manhunt balance and /manhunt random — see HuntDesk.
   balance:
-    done: "<green>Balanced by rating: <white><runners></white> run, <white><hunters></white> hunt — the Runners have a <white><chance></white>% chance."
-    too-few: "<yellow>It takes at least two players in the lobby to make two sides. One player is a very dull rivalry."
+    done: "<green>Balanced by rating: <white><runners></white> run, <white><hunters></white> hunt. The Runners have a <white><chance></white>% chance."
+    too-few: "<yellow>It takes at least two players in the lobby to make two sides."
   random:
-    done: "<green>Drawn by lot: <white><runners></white> run, <white><hunters></white> hunt — the Runners have a <white><chance></white>% chance."
+    done: "<green>Drawn by lot: <white><runners></white> run, <white><hunters></white> hunt. The Runners have a <white><chance></white>% chance."
     usage: "<yellow>/manhunt random and how many Runners, one if you leave it out. <click:run_command:'/manhunt random 1'><hover:show_text:'One Runner by lot'><u>[One]</u></hover></click> <click:run_command:'/manhunt random 2'><hover:show_text:'Two Runners by lot'><u>[Two]</u></hover></click>"
   # /manhunt unassign <player>.
   unassign:
-    done: "<green><white><player></white> is on no side now — they hunt at the start."
+    done: "<green><white><player></white> is on no side now. They hunt at the start."
     usage: "<yellow>/manhunt unassign and a player. <click:suggest_command:'/manhunt unassign '><hover:show_text:'Puts the start of it in your chat box'><u>[Type it]</u></hover></click> <click:run_command:'/manhunt sides'><hover:show_text:'The sides page'><u>[Click them instead]</u></hover></click>"
   # /manhunt door — what a start does to the whitelist.
   door:
@@ -368,7 +368,7 @@ manhunt:
   setup:
     applied: "<green>The <white><preset></white> hunt is set. Everything stays changeable: <click:run_command:'/manhunt'><hover:show_text:'Open Manhunt'><u>[Open Manhunt]</u></hover></click>"
     skipped: "<gray>No more setup offers. It is still on the hub whenever you want it."
-    usage: "<yellow>Pick a hunt: <click:run_command:'/manhunt setup classic'><hover:show_text:'One life, the real thing'><u>[Classic]</u></hover></click> <click:run_command:'/manhunt setup casual'><hover:show_text:'Two lives, team compass, long head start'><u>[Casual]</u></hover></click> <click:run_command:'/manhunt setup sweaty'><hover:show_text:'No head start, fists only, respawn wait'><u>[Sweaty]</u></hover></click> — or <click:run_command:'/manhunt setup'><hover:show_text:'Three questions, in a menu'><u>[the wizard]</u></hover></click>"
+    usage: "<yellow>Pick a hunt: <click:run_command:'/manhunt setup classic'><hover:show_text:'One life, the real thing'><u>[Classic]</u></hover></click> <click:run_command:'/manhunt setup casual'><hover:show_text:'Two lives, team compass, long head start'><u>[Casual]</u></hover></click> <click:run_command:'/manhunt setup sweaty'><hover:show_text:'No head start, fists only, respawn wait'><u>[Sweaty]</u></hover></click> or <click:run_command:'/manhunt setup'><hover:show_text:'Three questions, in a menu'><u>[the wizard]</u></hover></click>"
   # /manhunt stats, top, history.
   stats:
     usage: "<yellow>/manhunt stats and a player. <click:run_command:'/manhunt top'><hover:show_text:'Everybody on record'><u>[Leaderboard]</u></hover></click>"
@@ -376,9 +376,9 @@ manhunt:
     in-words: "<gold><player></gold><gray>: rating <white><rating></white>, <white><hunts></white> hunt(s), won <white><runner-wins></white> running and <white><hunter-wins></white> hunting, <white><catches></white> catch(es), caught <white><caught></white> time(s), longest run <white><best></white>, <white><distance></white> blocks travelled."
   top:
     usage: "<yellow>Sort the leaderboard by <click:run_command:'/manhunt top rating'><hover:show_text:'Best by rating'><u>[rating]</u></hover></click> <click:run_command:'/manhunt top wins'><hover:show_text:'Best by wins'><u>[wins]</u></hover></click> <click:run_command:'/manhunt top catches'><hover:show_text:'Best by catches'><u>[catches]</u></hover></click> <click:run_command:'/manhunt top survival'><hover:show_text:'Best by survival'><u>[survival]</u></hover></click> <click:run_command:'/manhunt top distance'><hover:show_text:'Best by distance'><u>[distance]</u></hover></click>"
-    empty: "<gray>Nobody is on record yet — the first hunt starts the leaderboard."
+    empty: "<gray>Nobody is on record yet. The first hunt starts the leaderboard."
     header: "<gold>The best by <white><board></white>:"
-    entry: "<gray> #<rank> <white><player></white> — <value>"
+    entry: "<gray> #<rank> <white><player></white>: <value>"
   history:
     none: "<gray>No hunt has been kept yet."
     entry: "<gray> Hunt #<number>: <white><winner></white>, <time>."
