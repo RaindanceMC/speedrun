@@ -61,8 +61,8 @@ public final class SidesEditorMenu extends PaginatedMenu<UUID> {
         Hunt hunt = live.mode().current().orElse(null);
         boolean runner = hunt != null ? hunt.isRunner(id) : live.teams().isRunner(id);
         boolean hunter = hunt != null ? hunt.isHunter(id) : live.teams().isHunter(id);
-        String side = runner ? "<green>Runner" : hunter ? "<red>Hunter" : "<gray>No side — hunts at the start";
-        String here = live.desk().present().contains(id) ? "<gray>Here." : "<dark_gray>Not here — not in the next hunt.";
+        String side = runner ? "<green>Runner" : hunter ? "<red>Hunter" : "<gray>No side, hunts at the start";
+        String here = live.desk().present().contains(id) ? "<gray>Here." : "<dark_gray>Not here, so not in the next hunt.";
         return Icons.head(id, (runner ? "<green>" : hunter ? "<red>" : "<white>") + MINI.escapeTags(live.desk().nameOf(id)),
                 side, here, "<gray>Rating " + Math.round(live.stats().rating(id)),
                 "<dark_gray>Left: Runner · Right: Hunter · Shift: no side");

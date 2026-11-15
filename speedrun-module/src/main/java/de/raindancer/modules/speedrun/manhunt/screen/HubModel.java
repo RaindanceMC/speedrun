@@ -70,7 +70,7 @@ public final class HubModel {
                     List.of(view.mySide() == Side.HUNTER ? "<yellow>You are hunting." : "<gray>Chase whoever is running."),
                     "manhunt join hunter", fixed));
             buttons.add(run("leave", WHO, 5, "OAK_DOOR", "<gray>Leave",
-                    List.of(view.huntOn() ? "<gray>Out of the hunt being played." : "<gray>Off the Runners — you hunt."),
+                    List.of(view.huntOn() ? "<gray>Out of the hunt being played." : "<gray>Off the Runners, you hunt."),
                     "manhunt leave", null));
         }
         buttons.add(run("trail", TOOLBAR, 3, view.trailOn() ? "GLOWSTONE_DUST" : "GUNPOWDER", "<gold>Particle trail",

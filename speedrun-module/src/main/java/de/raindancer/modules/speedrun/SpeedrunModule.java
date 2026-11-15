@@ -37,7 +37,7 @@ public final class SpeedrunModule implements FlexModule {
             .describedAs("A speedrun lobby: pick a game, an advancement goal and a death policy "
                     + "from the compass's menu, then press the green block to race. A countdown "
                     + "freezes everyone first, and the lobby world resets once the last racer has "
-                    + "left. Another module can add a game of its own to this same lobby — see "
+                    + "left. Another module can add a game of its own to this same lobby, see "
                     + "SpeedrunMode.")
             .by("Raindancer118");
 

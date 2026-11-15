@@ -123,7 +123,7 @@ public final class SpeedrunPreflight {
         if (mode != null && !racers.isEmpty() && fromMode.checks().isEmpty()) {
             String refusal = mode.refuseStart(config, racers).orElse(null);
             list = list.check(fixed(Checklist.Check.of("mode-ready", mode.label() + " is set up", refusal == null)
-                    .because(refusal == null ? "Ready to play." : "Not yet — open its page to set it up."),
+                    .because(refusal == null ? "Ready to play." : "Not yet. Open its page to set it up."),
                     mode.setup().isPresent() ? Fix.MODE_SETUP : Fix.NONE, actions));
         }
 

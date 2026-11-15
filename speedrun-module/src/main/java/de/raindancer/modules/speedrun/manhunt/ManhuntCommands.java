@@ -23,22 +23,22 @@ public final class ManhuntCommands {
         return List.of(
                 ModuleCommand.of("manhunt", "Pick a side for the next hunt",
                                 new ManhuntCommand(ManhuntCommands::require))
-                        .taking("join <runner|hunter> — put yourself on a side",
-                                "leave — off the Runners; mid-hunt, out of the hunt entirely",
-                                "assign <player> <runner|hunter> — put somebody else on a side (admin)",
-                                "status — who is on which side, and how the hunt is going",
-                                "give <player|all> [tracker|team|structure] — lost compasses back (admin)",
-                                "goal remove — no goal, also mid-hunt (admin)",
-                                "start — start a hunt, as the lobby's start block does (admin)",
-                                "resume [time] — pick a hunt up after a restart, nobody moved or cleared (admin)")
+                        .taking("join <runner|hunter>: put yourself on a side",
+                                "leave: off the Runners; mid-hunt, out of the hunt entirely",
+                                "assign <player> <runner|hunter>: put somebody else on a side (admin)",
+                                "status: who is on which side, and how the hunt is going",
+                                "give <player|all> [tracker|team|structure]: lost compasses back (admin)",
+                                "goal remove: no goal, also mid-hunt (admin)",
+                                "start: start a hunt, as the lobby's start block does (admin)",
+                                "resume [time]: pick a hunt up after a restart, nobody moved or cleared (admin)")
                         .needing(PermissionNodes.USE),
                 ModuleCommand.of("whitelist",
                                 "Open and close the server whitelist for a hunt; everything else "
                                         + "passes through to vanilla",
                                 new WhitelistCommand(ManhuntCommands::require))
-                        .taking("open — anybody can join",
-                                "close — only whoever is online right now stays whitelisted",
-                                "<anything else> — passed straight to vanilla's own /whitelist"));
+                        .taking("open: anybody can join",
+                                "close: only whoever is online right now stays whitelisted",
+                                "<anything else>: passed straight to vanilla's own /whitelist"));
     }
 
     static void ready(ManhuntServices live) {

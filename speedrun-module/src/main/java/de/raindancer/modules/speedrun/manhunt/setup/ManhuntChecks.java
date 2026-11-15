@@ -80,7 +80,7 @@ public final class ManhuntChecks {
         }
         checks = checks.check(Checklist.Check.of("manhunt-two", "Two players or more", s.present() >= 2)
                 .because(s.present() >= 2 ? s.present() + " here." : "Only " + s.present()
-                        + " here — a hunt needs somebody to run and somebody to chase.").in(HEADING));
+                        + " here. A hunt needs somebody to run and somebody to chase.").in(HEADING));
         if (s.present() < 2) {
             return checks;
         }
@@ -95,7 +95,7 @@ public final class ManhuntChecks {
         checks = checks.check(fixed(Checklist.Check.warning("manhunt-away", "Every Runner is here", s.runnersAway().isEmpty())
                 .because(s.runnersAway().isEmpty() ? "Nobody on the Runner side is missing."
                         : "On the Runner side but not here: " + String.join(", ", s.runnersAway())
-                        + " — they will not be in this hunt."), "Open the sides", openSides));
+                        + ". They will not be in this hunt."), "Open the sides", openSides));
         boolean closes = s.closesWhitelist() && !s.whitelistClosed();
         checks = checks.check(fixed(Checklist.Check.warning("manhunt-door", "The door stays open", !closes)
                 .because(closes ? "The server will close to everybody not here once the hunt starts."

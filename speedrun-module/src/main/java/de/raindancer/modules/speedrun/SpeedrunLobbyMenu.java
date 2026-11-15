@@ -69,7 +69,7 @@ public final class SpeedrunLobbyMenu extends Menu {
             case READY -> renderReady();
             case COUNTDOWN -> renderCountdown();
             case RUNNING -> renderInProgress("Running");
-            case PAUSED -> renderInProgress("Paused — nobody is here");
+            case PAUSED -> renderInProgress("Paused, nobody is here");
             case FINISHED -> renderFinished();
         }
         renderHazardDoor();
@@ -136,7 +136,7 @@ public final class SpeedrunLobbyMenu extends Menu {
                 SpeedrunAccess.START.guard(lobby, viewer, click -> new SpeedrunPreflightMenu(lobby, viewer, this).open()));
         toolbar(2, SpeedrunAccess.RESUME.allows(lobby, viewer) && (state == SpeedrunLobbyState.READY || state == SpeedrunLobbyState.FINISHED),
                 Icons.of(Material.RECOVERY_COMPASS, "<white>Resume a run", "<gray>Over the world as it stands,",
-                        "<gray>at a time you type — after a restart."),
+                        "<gray>at a time you type, after a restart."),
                 SpeedrunAccess.RESUME.allows(lobby, viewer) ? "Only from a ready or finished lobby" : "Staff resume runs",
                 SpeedrunAccess.RESUME.guard(lobby, viewer, click -> actions.askTime(viewer, "speedrun.resume.ask",
                         time -> {
@@ -280,7 +280,7 @@ public final class SpeedrunLobbyMenu extends Menu {
                         on
                                 ? "<dark_gray>mining " + config.creeperSpawnChanceOnBreakPercent()
                                         + "%, looting " + config.creeperSpawnChanceOnContainerPercent() + "%"
-                                : "<dark_gray>off — a plain race",
+                                : "<dark_gray>off, a plain race",
                         "<dark_gray>Click to open."),
                 click -> new SpeedrunHazardMenu(lobby, brand(), viewer, this).open());
     }

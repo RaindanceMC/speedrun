@@ -70,11 +70,11 @@ public final class ManhuntHubMenu extends Menu {
     private ItemStack status(Hunt hunt) {
         ManhuntServices live = pages.services();
         if (hunt == null) {
-            return Icons.of(Material.TARGET, "<gold>Manhunt — waiting",
+            return Icons.of(Material.TARGET, "<gold>Manhunt: waiting",
                     "<gray>" + live.teams().runners().size() + " on the Runner side.",
                     "<gray>Everybody else in the lobby hunts.");
         }
-        return Icons.of(Material.CLOCK, "<gold>Manhunt — the hunt is on",
+        return Icons.of(Material.CLOCK, "<gold>Manhunt: the hunt is on",
                 "<gray>" + hunt.livingRunners().size() + " of " + hunt.runners().size() + " Runner(s) still running.",
                 "<gray>" + hunt.hunters().size() + " hunting.");
     }

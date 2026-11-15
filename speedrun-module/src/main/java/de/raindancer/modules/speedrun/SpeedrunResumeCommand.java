@@ -40,7 +40,7 @@ public final class SpeedrunResumeCommand implements ISpeedrunCommand {
 
     @Override
     public String describe() {
-        return "start a run over the world as it stands — nobody moved or cleared — at a given time";
+        return "start a run over the world as it stands, with nobody moved or cleared, at a given time";
     }
 
     /** What Paper asks before running this — the node the command is declared with. */

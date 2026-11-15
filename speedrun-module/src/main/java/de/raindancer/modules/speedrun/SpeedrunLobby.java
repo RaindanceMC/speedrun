@@ -668,7 +668,7 @@ public final class SpeedrunLobby {
         }
         if (countdownLauncher == null) {
             log.error("beginCountdown() was called on a SpeedrunLobby built without a countdown "
-                    + "launcher — that constructor is for tests only.");
+                    + "launcher. That constructor is for tests only.");
             return StartOutcome.NOT_READY;
         }
         Set<UUID> frozen = Set.copyOf(participants);

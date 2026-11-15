@@ -38,7 +38,7 @@ import org.bukkit.Material;
         @Topic(path = "speedrun/start", title = "The start point", icon = Material.LODESTONE,
                 description = "Where /starthere put the line every run begins on."),
         @Topic(path = "speedrun/explosives", title = "What players may blow up", icon = Material.TNT,
-                description = "Beds, respawn anchors, TNT and end crystals — each one switchable per "
+                description = "Beds, respawn anchors, TNT and end crystals, each one switchable per "
                         + "dimension, so a ruleset can ban bed bombing without banning the dragon fight."),
         @Topic(path = "speedrun/lobby", title = "The lobby itself", icon = Material.LIME_CONCRETE,
                 description = "Who may start a run, what can hurt anybody waiting for one, and what "
@@ -60,7 +60,7 @@ public record SpeedrunSettings(
         @In("speedrun/race") @Title("Game mode")
         @Describe("Which game is played in this lobby. Empty is a plain race; 'manhunt' is Runners "
                 + "against Hunters, and needs RainsManhunt installed. A mode keeps everything a race "
-                + "already has — this world, the compass, the countdown, the clock and the reset — "
+                + "already has (this world, the compass, the countdown, the clock and the reset) "
                 + "and only adds what makes it a different game.")
         String gameMode,
 
@@ -73,7 +73,7 @@ public record SpeedrunSettings(
         String advancementKey,
 
         @In("speedrun/race") @Title("Clear advancements at the start")
-        @Describe("Whether every racer's advancements are wiped as a run starts. On — the default — "
+        @Describe("Whether every racer's advancements are wiped as a run starts. On (the default), "
                 + "a repeat racer plays the same game a first-timer does: the screen empty, every "
                 + "toast still to come, and a goal that can actually be granted again. Off leaves "
                 + "everybody's saved progress alone, and only the goal itself is cleared.")
@@ -85,8 +85,8 @@ public record SpeedrunSettings(
 
         @In("speedrun/race") @Title("Require the exit portal")
         @Describe("When the advancement goal is the vanilla dragon kill, whether killing it is only "
-                + "the first half — a run does not end until a participant then steps into the exit "
-                + "portal, the way an actual dragon-kill speedrun is judged. Has no effect on any other "
+                + "the first half. The run then does not end until a participant steps into the exit "
+                + "portal, as in an actual dragon-kill speedrun. Has no effect on any other "
                 + "advancement goal, or when death alone ends the run.")
         boolean requireExitPortalAfterDragon,
 
@@ -103,8 +103,8 @@ public record SpeedrunSettings(
 
         @In("speedrun/hazard") @Title("Creeper chance (container open)") @Range(min = 0, max = 100)
         @Describe("Chance, in percent, that a racer opening a chest or other container during a run "
-                + "spawns a creeper right where it stands — set separately from the block-break chance, "
-                + "since opening loot chests is a very different risk than mining.")
+                + "spawns a creeper right where it stands. It is set separately from the block-break chance, "
+                + "because opening loot chests is a different risk than mining.")
         int creeperSpawnChanceOnContainerPercent,
 
         @In("speedrun/hazard") @Title("Charged creeper chance (container open)") @Range(min = 0, max = 100)
@@ -114,7 +114,7 @@ public record SpeedrunSettings(
 
         @In("speedrun/start") @Title("Start point set")
         @Describe("Whether /starthere has set a start point. Off means nobody is teleported when a "
-                + "countdown begins — racers start wherever they were standing when it caught them.")
+                + "countdown begins. Racers start wherever they were standing.")
         boolean startPointSet,
 
         @In("speedrun/start") @Title("Start X")
@@ -138,20 +138,20 @@ public record SpeedrunSettings(
         double startPitch,
 
         @In("speedrun/lobby") @Title("Only staff get the start block")
-        @Describe("Whether the green block is handed only to somebody holding rainsspeedrun.start — "
-                + "operators, by default — and only they may press one. Off, everybody in the lobby "
+        @Describe("Whether the green block is handed only to somebody holding rainsspeedrun.start "
+                + "(operators, by default), and only they may press one. Off, everybody in the lobby "
                 + "is handed one and anybody can start the next run.")
         boolean startBlockStaffOnly,
 
         @In("speedrun/lobby") @Title("Nobody can be hurt in the lobby")
         @Describe("Whether damage to anybody standing in the lobby world is refused while no run is "
-                + "under way — including damage another player deals. Off, waiting for a run to start "
+                + "under way, including damage another player deals. Off, waiting for a run to start "
                 + "is as dangerous as anywhere else.")
         boolean lobbyProtected,
 
         @In("speedrun/lobby") @Title("Nothing explodes in the lobby")
         @Describe("Whether an explosion in the lobby world is refused outright while no run is under "
-                + "way, so a creeper cannot take the start line — or anybody standing on it — with it. "
+                + "way, so a creeper cannot destroy the start line or hurt anybody standing on it. "
                 + "Nothing is refused once a run has actually begun.")
         boolean lobbyExplosionsBlocked,
 
@@ -167,8 +167,8 @@ public record SpeedrunSettings(
         boolean restartWhenRunEnds,
 
         @In("speedrun/lobby") @Title("Wait before that reset (seconds)") @Range(min = 0, max = 300)
-        @Describe("How long a finished run is left standing before the world is remade — long enough "
-                + "to read who won and look at where it ended, short enough that nobody is waiting.")
+        @Describe("How long a finished run is left standing before the world is remade. It should be long "
+                + "enough to read who won and look at where it ended.")
         int restartAfterSeconds,
 
         @In("speedrun/race") @Title("Set the time when a run starts")
@@ -183,7 +183,7 @@ public record SpeedrunSettings(
 
         @In("speedrun/explosives") @Title("Beds explode in the Nether")
         @Describe("Whether clicking a bed in the run's Nether does what it does in vanilla. Off, the "
-                + "click simply does nothing — the classic 'no bed bombing' rule.")
+                + "click does nothing (the classic 'no bed bombing' rule).")
         boolean bedExplosionsInNether,
 
         @In("speedrun/explosives") @Title("Beds explode in the End")
@@ -202,7 +202,7 @@ public record SpeedrunSettings(
         boolean anchorExplosionsInTheEnd,
 
         @In("speedrun/explosives") @Title("TNT explodes in the Overworld")
-        @Describe("Whether TNT — including a minecart with TNT in it, which is the same trick — goes "
+        @Describe("Whether TNT, including a minecart with TNT in it, goes "
                 + "off in the run's Overworld.")
         boolean tntInOverworld,
 
@@ -223,21 +223,21 @@ public record SpeedrunSettings(
         boolean endCrystalsInNether,
 
         @In("speedrun/explosives") @Title("End crystals explode in the End")
-        @Describe("The same for the run's End — the one that decides whether the dragon can be "
-                + "respawned, and whether her healing crystals can be shot down.")
+        @Describe("The same for the run's End, which decides whether the dragon can be "
+                + "respawned and whether her healing crystals can be shot down.")
         boolean endCrystalsInTheEnd,
 
         @In("speedrun/lobby") @Title("Players may change the world before a run")
         @Describe("Whether an ordinary player can break or place a block, use a bucket, open a "
                 + "chest or use any other block anywhere on the server while no run is under way. "
-                + "Off — the default — nobody can strip the start line, loot, or scout the map, in "
-                + "the wait before a race. Anybody holding rainsspeedrun.admin is exempt, "
+                + "Off (the default), nobody can strip the start line, loot or scout the map "
+                + "while waiting for a race. Anybody holding rainsspeedrun.admin is exempt, "
                 + "since somebody has to be able to build the lobby.")
         boolean breakingBlocksBeforeRuns,
 
         @In("speedrun/lobby") @Title("Monsters hunt players before a run")
         @Describe("Whether a mob may pick a player as its target while no run is under way, anywhere "
-                + "on the server. Off — the default — everything ignores everybody until the clock "
+                + "on the server. Off (the default), everything ignores everybody until the clock "
                 + "starts, so waiting for a race is not a fight.")
         boolean monstersHuntBeforeRuns,
 
@@ -247,7 +247,7 @@ public record SpeedrunSettings(
         SpeedrunSeedMode seedMode,
 
         @In("speedrun/seeds") @Title("Seed")
-        @Describe("The seed FIXED uses — a number, or a word the way the create-world screen reads one.")
+        @Describe("The seed FIXED uses: a number, or a word as the create-world screen reads it.")
         String seed,
 
         @In("speedrun/seeds") @Title("Seed pool")
@@ -259,7 +259,7 @@ public record SpeedrunSettings(
         int pearlTarget,
 
         @In("speedrun/splits") @Title("Where splits are shown")
-        @Describe("SIDEBAR, BOSSBAR, ACTIONBAR or OFF — for everybody who has not picked their own "
+        @Describe("SIDEBAR, BOSSBAR, ACTIONBAR or OFF, for everybody who has not picked their own "
                 + "with the button in the menu.")
         SpeedrunHudMode hudDefault,
 
@@ -274,7 +274,7 @@ public record SpeedrunSettings(
 
         @In("speedrun/splits") @Title("Resumed and edited runs rank")
         @Describe("Whether a run picked up with /speedrunresume, or whose clock was set by hand, counts "
-                + "toward personal bests and records. Off — the default — keeps them in the history, "
+                + "toward personal bests and records. Off (the default) keeps them in the history, "
                 + "flagged, and off the leaderboards.")
         boolean rankEditedRuns,
 
@@ -288,7 +288,7 @@ public record SpeedrunSettings(
         boolean setupDone,
 
         @In("speedrun/lobby") @Title("Players who join a run under way")
-        @Describe("OFF — the default — leaves somebody who joins mid-run alone: they look on. SPECTATE puts "
+        @Describe("OFF (the default) leaves somebody who joins mid-run alone, and they watch. SPECTATE puts "
                 + "them in spectator mode in the run's world until it is over. RACE makes them a racer from "
                 + "that moment: a clean slate, the practice kit, the game's own items (Manhunt's compasses "
                 + "for their side), a safe spot near the start, the clock and the sidebar. A late racer's "

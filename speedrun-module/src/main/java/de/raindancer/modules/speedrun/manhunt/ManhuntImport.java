@@ -84,7 +84,7 @@ public final class ManhuntImport {
                     log.info("{} Manhunt rating(s) carried into the speedrun history.", standings.size());
                 } else {
                     log.warn("Manhunt's old ratings could not be written yet; {} is kept and read again next "
-                            + "start — nobody's rating is counted twice.", stats);
+                            + "start. Nobody's rating is counted twice.", stats);
                 }
             }
         }
@@ -122,7 +122,7 @@ public final class ManhuntImport {
                 log.info("{} past hunt(s) carried into the speedrun history.", added);
             } else {
                 log.warn("Manhunt's old hunts could not be written to Core's history yet; {} is kept and read "
-                        + "again next start — nothing is added twice.", hunts);
+                        + "again next start. Nothing is added twice.", hunts);
             }
         }
     }

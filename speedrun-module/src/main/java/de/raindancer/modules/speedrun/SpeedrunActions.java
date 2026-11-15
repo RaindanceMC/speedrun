@@ -148,7 +148,7 @@ public final class SpeedrunActions {
     static String fixTooltip(SpeedrunPreflight.Fix fix) {
         return switch (fix) {
             case NONE -> "";
-            case RESET -> "Deletes the run's worlds and makes new ones — asks first";
+            case RESET -> "Deletes the run's worlds and makes new ones. Asks first.";
             case CREATE_WORLDS -> "Makes whichever of the three worlds is missing";
             case PLAIN_RACE -> "Sets game-mode to a plain race";
             case DRAGON_GOAL -> "Sets the goal to killing the dragon";

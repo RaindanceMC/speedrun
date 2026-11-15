@@ -59,7 +59,7 @@ public final class SpeedrunSeedMenu extends Menu {
                 "<white>This world: " + (world == null ? "not loaded" : String.valueOf(world.getSeed())),
                 world == null ? "<gray>No lobby world to read a seed from."
                         : "<gray>" + SpeedrunSeeds.typeOf(world.getSeed(), config, history).label()
-                        + " — ranked as such.",
+                        + ", ranked as such.",
                 "<dark_gray>Click to get it in chat, to copy."),
                 click -> {
                     if (world != null) {

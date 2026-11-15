@@ -41,7 +41,7 @@ public final class SpeedrunStandingsMenu extends PaginatedMenu<UUID> {
 
     @Override
     protected Component title() {
-        return MINI.deserialize("<dark_gray>Players — " + SpeedrunScreens.text(board.label()));
+        return MINI.deserialize("<dark_gray>Players: " + SpeedrunScreens.text(board.label()));
     }
 
     @Override
@@ -63,7 +63,7 @@ public final class SpeedrunStandingsMenu extends PaginatedMenu<UUID> {
     @Override
     protected void decorate() {
         set(MenuLayout.HEADER_SUBJECT, Icons.of(Material.GOLDEN_HELMET, "<gold>" + SpeedrunScreens.text(mode)
-                + " — " + board.label(), "<gray>Click a player for their stats."));
+                + ": " + board.label(), "<gray>Click a player for their stats."));
         toolbar(4, Icons.of(Material.COMPARATOR, "<white>Sorted by " + board.label(), "<dark_gray>Click for the next."),
                 click -> {
                     board = board.next();

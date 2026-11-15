@@ -21,7 +21,7 @@ public enum SpeedrunLateJoin {
 
     public String label() {
         return switch (this) {
-            case OFF -> "Nothing — they look on";
+            case OFF -> "Nothing, they look on";
             case SPECTATE -> "They watch in spectator mode";
             case RACE -> "They join the race";
         };

@@ -30,7 +30,7 @@ import org.bukkit.Material;
         @Topic(path = "speedrun/manhunt/start", title = "The start", icon = Material.CLOCK,
                 description = "Where everybody stands, and how long the Runners get before the chase."),
         @Topic(path = "speedrun/manhunt/variants", title = "Variants", icon = Material.TOTEM_OF_UNDYING,
-                description = "Lives, respawn waits, glowing Runners — the rules a hunt can be played by."),
+                description = "Lives, respawn waits, glowing Runners and the other rules a hunt can be played by."),
         @Topic(path = "speedrun/manhunt/show", title = "What everybody sees", icon = Material.SPYGLASS,
                 description = "The head-start bar and the end-of-hunt summary."),
         @Topic(path = "speedrun/manhunt/stats", title = "Stats and ratings", icon = Material.WRITABLE_BOOK,
@@ -60,7 +60,7 @@ public record ManhuntSettings(
         int trackerRefreshTicks,
 
         @In("speedrun/manhunt/tracker") @Title("Team compass")
-        @Describe("Whether everybody in a hunt also gets a second compass — a recovery compass — that "
+        @Describe("Whether everybody in a hunt also gets a second compass (a recovery compass) that "
                 + "points at their own side: Runners at Runners, Hunters at Hunters. It works in the "
                 + "Nether and the End too. Right-click cycles; sneak + right-click opens a list.")
         boolean trackerTeamCompass,
@@ -73,17 +73,17 @@ public record ManhuntSettings(
 
         @In("speedrun/manhunt/tracker") @Title("Particle trail")
         @Describe("Whether a Hunter holding the compass sees a dotted line of particles leading "
-                + "towards whoever — or whichever door — it is pointing at. Only they see it.")
+                + "towards the Runner or door it is pointing at. Only they see it.")
         boolean trackerParticleTrail,
 
         @In("speedrun/manhunt/tracker") @Title("Runners get a compass too")
-        @Describe("Whether every Runner also carries a tracking compass — pointing at the Hunters: "
-                + "the nearest, or one they pick. Off, Runners get no tracking compass at all.")
+        @Describe("Whether every Runner also carries a tracking compass that points at the Hunters, "
+                + "the nearest or one they pick. Off, Runners get no tracking compass at all.")
         boolean runnerCompass,
 
         @In("speedrun/manhunt/tracker") @Title("Runners' structure compass")
         @Describe("Whether every Runner gets one compass per hunt that they point at a kind of "
-                + "structure of their choice — never a stronghold. It finds the nearest one, shows "
+                + "structure of their choice, never a stronghold. It finds the nearest one, shows "
                 + "no distance, and disappears when dropped or once they are within 20 blocks. "
                 + "Off, nobody is handed one.")
         boolean runnerStructureCompass,
@@ -97,7 +97,7 @@ public record ManhuntSettings(
 
         @In("speedrun/manhunt/sides") @Title("Runners may choose themselves")
         @Describe("Whether a player can put themselves on the Runner side. Off, only an admin can, "
-                + "through /manhunt assign — everybody else is chasing.")
+                + "through /manhunt assign. Everybody else is chasing.")
         boolean runnerSelfJoin,
 
         @In("speedrun/manhunt/sides") @Title("Hunters only punch each other")
@@ -117,15 +117,15 @@ public record ManhuntSettings(
 
         @In("speedrun/manhunt/start") @Title("Start in a circle")
         @Describe("Whether everybody is placed evenly around one circle for the countdown, facing "
-                + "the middle — Runners together, Hunters together. The circle grows with the "
+                + "the middle, Runners together and Hunters together. The circle grows with the "
                 + "number of players, around the start point or the world's spawn.")
         boolean startInCircle,
 
         @In("speedrun/manhunt/sides") @Title("A Runner away this long is caught (seconds)") @Range(min = 0, max = 3600)
-        @Describe("How long a Runner may stay logged out during a hunt before they count as caught — "
+        @Describe("How long a Runner may stay logged out during a hunt before they count as caught. "
                 + "the last of them ends the hunt as the Hunters' win. Coming back in time costs "
                 + "nothing. 0 never catches anybody for being away. Hunters may be away as long as "
-                + "they like: the hunt simply goes on without them.")
+                + "they like: the hunt goes on without them.")
         int runnerOfflineGraceSeconds,
 
         @In("speedrun/manhunt/variants") @Title("Runner lives") @Range(min = 1, max = 10)
@@ -134,8 +134,8 @@ public record ManhuntSettings(
         int runnerLives,
 
         @In("speedrun/manhunt/variants") @Title("Hunter respawn wait (seconds)") @Range(min = 0, max = 60)
-        @Describe("How long a Hunter who died stands still after respawning — no step, no block, no "
-                + "hit — before rejoining the chase. 0 sends them straight back.")
+        @Describe("How long a Hunter who died stands still after respawning (no step, no block, no "
+                + "hit) before rejoining the chase. 0 sends them straight back.")
         int hunterRespawnDelaySeconds,
 
         @In("speedrun/manhunt/variants") @Title("Runners glow every (minutes)") @Range(min = 0, max = 60)
@@ -172,7 +172,7 @@ public record ManhuntSettings(
 
         @In("speedrun/manhunt/start") @Title("A latecomer's side")
         @Describe("Which side somebody joins on when they join a hunt under way with the lobby's late-join "
-                + "set to RACE. HUNTER — the default — never hands a stranger the run; RUNNER makes every "
+                + "set to RACE. HUNTER (the default) never hands a stranger the run; RUNNER makes every "
                 + "latecomer another Runner; SMALLER_SIDE puts them where there are fewer, a tie going to "
                 + "the Hunters. A late Runner gets the lives and the offline grace every Runner gets.")
         LateJoinerSide lateJoinerSide

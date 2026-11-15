@@ -101,7 +101,7 @@ public final class SpeedrunHistory {
         if (!standingsStore.problems().isEmpty()) {
             standingsReadOnly = true;
             log.warn("The standings {} could not be read ({}). Ratings are kept until the next restart but "
-                    + "not written, so the file is not replaced — fix or move it.",
+                    + "not written, so the file is not replaced. Fix or move it.",
                     standingsStore.file(), String.join("; ", standingsStore.problems()));
             return;
         }

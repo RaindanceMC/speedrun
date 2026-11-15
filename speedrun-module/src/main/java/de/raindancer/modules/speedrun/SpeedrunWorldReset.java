@@ -60,7 +60,7 @@ final class SpeedrunWorldReset {
             if (WorldRegenerator.isPrimaryWorld(existing)) {
                 log.warn("The speedrun world is set to '{}', this server's primary world. It can "
                         + "never be unloaded, so /speedrunreset and the automatic reset after a run "
-                        + "will always fail on it — set world-name to a dedicated world instead.", name);
+                        + "will always fail on it. Set world-name to a dedicated world instead.", name);
             }
         } else {
             regenerator().create(name, World.Environment.NORMAL, seed);

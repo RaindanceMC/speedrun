@@ -38,10 +38,10 @@ public interface SpeedrunInput {
                 : Parsed.no("A number, or a word the way the create-world screen takes one.");
     };
 
-    /** A pool of seeds, separated by commas — at least one. */
+    /** A pool of seeds, separated by commas, at least one. */
     Parsers.Parser<String> SEED_POOL = typed -> {
         String pool = typed == null ? "" : typed.trim();
-        return SpeedrunSeeds.pool(pool).isEmpty() ? Parsed.no("Seeds separated by commas — at least one.")
+        return SpeedrunSeeds.pool(pool).isEmpty() ? Parsed.no("Separate the seeds with commas. At least one is needed.")
                 : Parsed.ok(pool);
     };
 
