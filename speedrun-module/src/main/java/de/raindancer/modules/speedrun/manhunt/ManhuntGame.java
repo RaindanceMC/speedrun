@@ -7,7 +7,6 @@ import de.raindancer.core.data.settings.SettingsSchema;
 import de.raindancer.core.data.settings.SettingsStore;
 import de.raindancer.core.platform.log.LogChannel;
 import de.raindancer.core.ui.chat.ChatChannels;
-import de.raindancer.core.ui.profile.ProfileExtensions;
 import de.raindancer.core.world.visual.Navigator;
 import de.raindancer.modules.api.ModuleCommand;
 import de.raindancer.modules.api.ModuleContext;
@@ -26,7 +25,6 @@ import de.raindancer.modules.speedrun.manhunt.stats.HuntRecorder;
 import de.raindancer.modules.speedrun.manhunt.stats.StatsStore;
 import de.raindancer.modules.speedrun.manhunt.screen.ManhuntTrackerMenu;
 import de.raindancer.modules.speedrun.manhunt.screen.StructureChoiceMenu;
-import de.raindancer.modules.speedrun.manhunt.screen.TrailProfileButton;
 import de.raindancer.modules.speedrun.manhunt.service.Eliminations;
 import de.raindancer.modules.speedrun.manhunt.service.HuntersByDefaultListener;
 import de.raindancer.modules.speedrun.manhunt.service.HuntersFistsOnly;
@@ -87,7 +85,6 @@ public final class ManhuntGame {
     private RainsCore core;
     private HuntersFistsOnly fistsOnly;
     private PositionShare navigation;
-    private TrailProfileButton trailButton;
     private ManhuntTeamChannel teamChannel;
 
     /**
@@ -203,8 +200,16 @@ public final class ManhuntGame {
         navigation = new PositionShare(context.plugin(), context.core().buttons(), context.core().messages(),
                 new Navigator(context.plugin(), context.core().actionBars(), context.core().messages()),
                 settings::current);
-        trailButton = new TrailProfileButton(settings::current, context.core().messages());
-        ProfileExtensions.register(trailButton);
+        // The trail, split titles and the HUD are on /preferences (Core 2.103.0); the commands stay.
+        try {
+            for (de.raindancer.core.ui.preference.Preference each
+                    : ManhuntPreferences.build(settings::current, context.core().messages())) {
+                de.raindancer.core.ui.preference.Preferences.offer(context.plugin(), each);
+                context.closeWith(() -> de.raindancer.core.ui.preference.Preferences.withdraw(each));
+            }
+        } catch (LinkageError olderCore) {
+            context.log().info("RainsCore is older than 2.103.0: the compass trail and split titles are not on /preferences.");
+        }
         // Team chat — /chat team — is the chat plugin's to route; this only says who is on your side.
         teamChannel = new ManhuntTeamChannel(teams, liveHunt);
         ChatChannels.register(teamChannel);
@@ -312,9 +317,6 @@ public final class ManhuntGame {
         SpeedrunModes.withdraw(ManhuntMode.ID);
         if (teamChannel != null) {
             ChatChannels.unregister(teamChannel);
-        }
-        if (trailButton != null) {
-            ProfileExtensions.unregister(trailButton);
         }
         if (navigation != null) {
             navigation.stopAll();

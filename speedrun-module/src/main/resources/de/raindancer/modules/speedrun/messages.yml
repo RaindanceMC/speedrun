@@ -263,7 +263,7 @@ manhunt:
     wait: "<yellow>Try again in <white><seconds></white> second(s)."
     reached: "<green>You have reached the <white><structure></white>. Your compass is gone."
     dropped: "<gray>You threw your structure compass away. It is gone."
-  # /manhunt trail, or the button on /profile — each player's own particle trail.
+  # /manhunt trail or /preferences — each player's own particle trail.
   trail:
     "on": "<green>Your compass shows the particle trail again."
     "off": "<yellow>Your compass no longer shows the particle trail. <click:run_command:'/manhunt trail'><hover:show_text:'Show the trail again'><u>[Turn it back on]</u></hover></click>"

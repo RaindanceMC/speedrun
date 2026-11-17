@@ -25,10 +25,15 @@ public final class TrailPreference {
     }
 
     public static Toggled toggle(Player player, ManhuntSettings settings) {
+        return set(player, settings, !SWITCH.isOn(player));
+    }
+
+    public static Toggled set(Player player, ManhuntSettings settings, boolean on) {
         if (!settings.trackerParticleTrail()) {
             return Toggled.SERVER_OFF;
         }
-        return SWITCH.toggle(player) ? Toggled.ON : Toggled.OFF;
+        SWITCH.set(player, on);
+        return on ? Toggled.ON : Toggled.OFF;
     }
 
     /** The message that says what a toggle did. */

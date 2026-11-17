@@ -33,7 +33,7 @@ import java.util.Locale;
  */
 public final class SpeedrunModule implements FlexModule {
 
-    private static final ModuleInfo INFO = ModuleInfo.of("speedrun", "Speedrun", "1.36.1")
+    private static final ModuleInfo INFO = ModuleInfo.of("speedrun", "Speedrun", "1.37.0")
             .describedAs("A speedrun lobby: pick a game, an advancement goal and a death policy "
                     + "from the compass's menu, then press the green block to race. A countdown "
                     + "freezes everyone first, and the lobby world resets once the last racer has "
@@ -107,6 +107,15 @@ public final class SpeedrunModule implements FlexModule {
                 context.core().messages(), context.core().settingsNavigation(), context.core().prompts(),
                 context.core().buttons(), context.core().effects(), history, prefs, hud));
         this.history = history;
+        // /preferences (Core 2.103.0) lists the splits HUD; /speedrun hud keeps working.
+        try {
+            var actions = new SpeedrunActions(lobby, context.core().messages());
+            var preference = SpeedrunPreferences.hud(hud::modeOf, actions::setHud);
+            de.raindancer.core.ui.preference.Preferences.offer(context.plugin(), preference);
+            context.closeWith(() -> de.raindancer.core.ui.preference.Preferences.withdraw(preference));
+        } catch (LinkageError olderCore) {
+            context.log().info("RainsCore is older than 2.103.0: the splits display is not on /preferences.");
+        }
         moveOldHistory(context, history);
         // Core's copy of "does this run rank" follows rank-edited-runs as it changes.
         settings.onChange(fresh -> Scheduling.async(context.plugin(), history::rerank));
