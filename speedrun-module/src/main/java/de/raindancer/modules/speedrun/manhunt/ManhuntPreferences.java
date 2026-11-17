@@ -17,7 +17,7 @@ public final class ManhuntPreferences {
     }
 
     public static List<Preference> build(Supplier<ManhuntSettings> settings, Messages messages) {
-        Preference titles = Preference.toggle("manhunt:titles", GROUP, "Split titles",
+        Preference titles = Preference.toggle("manhunt:titles", GROUP, "Speedrun split titles",
                 "Shows a title on screen when somebody reaches a split, like a new personal best.",
                 SpeedrunSplitAnnouncer.TITLES::isOn, (player, on) -> {
                     SpeedrunSplitAnnouncer.TITLES.set(player, on);

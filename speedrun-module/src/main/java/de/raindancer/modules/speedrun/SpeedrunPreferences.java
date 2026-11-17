@@ -22,7 +22,7 @@ public final class SpeedrunPreferences {
     public static Preference hud(Function<UUID, SpeedrunHudMode> current, BiConsumer<Player, SpeedrunHudMode> set) {
         SpeedrunHudMode[] modes = SpeedrunHudMode.values();
         List<String> labels = Arrays.stream(modes).map(SpeedrunHudMode::label).toList();
-        return Preference.choice("speedrun:hud", "Speedrun", "Splits display",
+        return Preference.choice("speedrun:hud", "Speedrun", "Speedrun splits display",
                 "Where you see your splits during a run: sidebar, boss bar, action bar, or only the clock.", labels,
                 player -> current.apply(player.getUniqueId()).ordinal(), (player, index) -> set.accept(player, modes[index]));
     }
